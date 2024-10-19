@@ -1,0 +1,10 @@
+<div>
+  <% if @user.user_image.attached? %>
+      <%= image_tag @user.user_image, class:"user-image" %> 
+  <% else %>
+      <%= image_tag "user_icon.png", class:"user-image" %>
+  <% end %>
+ユーザー名：<%= @user.nickname%>
+コメント <%= @user.comment%>
+
+  <%= render partial: "shared/posts_index", locals: { posts: @posts } %>
