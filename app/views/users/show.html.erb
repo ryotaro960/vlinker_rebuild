@@ -24,8 +24,8 @@
     <% if user_signed_in? && current_user.id == @user.id %>
       <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
-        <%= f.text_field :comment, class:'comment-input', placeholder:'こんにちは！' %>
-        <%= f.submit '変更する' ,class:'post-btn' %>
+        <%= f.text_area :comment, class:'comment-input', placeholder:'こんにちは！' %>
+        <%= f.submit '変更する', class:'post-btn' %>
       <% end %>
     <% else%>
       <div class='user-comment'>

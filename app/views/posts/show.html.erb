@@ -5,7 +5,7 @@
     <div class='movie-main-content'>
       <iframe src='https://www.youtube.com/embed/<%= @post.movie_main_embedded %>' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br>
       <div class='movie-tags'>
-        <p>関連タグ：</p>
+        関連タグ：
         <% @post.movie_tags.each do |tag| %>
           <%= (link_to  tag.movie_tag_name, posts_path(movie_tag: tag.movie_tag_name)) if tag.present? %>
         <% end %>
@@ -35,7 +35,7 @@
             <%= link_to '編集', edit_post_path(@post.id) %>
           </div>
           <div class='menu-list'>
-            <%= link_to '削除', post_path(@post.id), data: { turbo_method: :delete } %>
+            <%= link_to '削除', post_path(@post.id), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？"} %>
           </div>
         </div>
       </div>
@@ -50,14 +50,13 @@
     <table border='1' class='talent-table'>
       <tbody class='talent-introduce'>
         <tr>
-          <th class='list-head'><p>名前</p></th>
+          <th class='list-head'>名前</th>
           <td class='table-indent'>
             <%= link_to @post.talent_name, posts_path(talent_name: @post.talent_name) %>
-            <%#= @post.talent_name %>
           </td>
         </tr>
         <tr>
-          <th class='list-head'><p>関連タグ</p></th>
+          <th class='list-head'>関連タグ</th>
           <td class='table-indent'>
             <% @post.talent_tags.each do |tag| %>
               <%= (link_to tag.talent_tag_name, posts_path(talent_tag: tag.talent_tag_name)) if tag.present? %>
@@ -66,7 +65,7 @@
         </tr>
         <% if @post.talent_belongs != '' %>
         <tr>
-          <th class='list-head'><p>所属事務所</p></th>
+          <th class='list-head'>所属事務所</th>
           <td class='table-indent'>
             <%= (link_to @post.talent_belongs, posts_path(talent_belongs: @post.talent_belongs)) if @post.talent_belongs.present? %>
           </td>
@@ -89,7 +88,7 @@
         <% if @post.message != '' %>
           <tr><td colspan='2'><%= @post.message %></td></tr>
         <% else %>
-          <tr><td colspan='2'><p>コメントはまだありません。</p></td></tr>
+          <tr><td colspan='2'>コメントはまだありません。</td></tr>
         <% end %>
       </tbody>
     </table>

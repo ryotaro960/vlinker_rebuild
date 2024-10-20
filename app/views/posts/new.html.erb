@@ -1,46 +1,119 @@
-<h1>紹介ページ投稿</h1>
+<h1 class='call-title'>紹介ページ投稿</h1>
 
-<%= form_with model: @post_form, url: posts_path, method: :post, id: 'new_post', local: true do |f| %>
+<div class='form-position'>
+  <%= form_with model: @post_form, url: posts_path, method: :post, id: 'new_post', local: true do |f| %>
 
-<%= render 'shared/error_messages', model: f.object %>
+  <%= render 'shared/error_messages', model: f.object %>
+  
+  <label>
+    <p>
+      <span class="Form-Item-Label-Required">必須</span>
+      イチオシ動画
+    </p>
+  <%= f.text_field :movie_main, class:'input-style url-input', id:'movie_main_form', placeholder:'URLを記入してください' %>
+  <%= f.text_field :movie_main_embedded, class:'hidden', id:'movie_main_embedded_form', placeholder:'11桁のコードが記入されます' %>
+  <%= f.text_field :movie_main_thumbnail, class:'hidden', id:'movie_main_thumbnail_form', placeholder:'サムネイル表示のためのURLが記入されます'%>
+  </label>
 
-メイン動画<br>
-<%= f.text_field :movie_main, class:"price-input", id:"movie_main_form", placeholder:"例）300" %>
-<%= f.text_field :movie_main_embedded, class:"price-input", id:"movie_main_embedded_form", placeholder:"例）300" %>
-<%= f.text_field :movie_main_thumbnail, class:"price-input", id:"movie_main_thumbnail_form", placeholder:"例）300" %><br>
-メイン動画タグ(任意)<br>
-<%= f.text_field :movie_tags, class:"movie-main-tag", id:"movie_firsttag", placeholder:"例）300", maxlength: "20" %>
-<%= f.text_field :movie_tags, class:"movie-main-tag", id:"movie_secondtag", placeholder:"例）300", maxlength: "20" %>
-<%= f.text_field :movie_tags, class:"movie-main-tag", id:"movie_thirdtag", placeholder:"例）300", maxlength: "20" %>
-<%= f.text_field :movie_tag_name, class:"movie-main-tag", id:"movie_main_tags_merged", placeholder:"ここに左三つを`/$で接続したものを表示" %><br>
-サブ動画1(任意)<br>
-<%= f.text_field :movie_left, class:"price-input", id:"movie_left_form", placeholder:"例）300" %>
-<%= f.text_field :movie_left_embedded, class:"price-input", id:"movie_left_embedded_form", placeholder:"例）300" %><br>
-サブ動画2(任意)<br>
-<%= f.text_field :movie_right, class:"price-input", id:"movie_right_form", placeholder:"例）300" %>
-<%= f.text_field :movie_right_embedded, class:"price-input", id:"movie_right_embedded_form", placeholder:"例）300" %><br>
-VTuberイラスト(任意)<br>
-<%= f.file_field :talent_image, id:"talent-image" %><br>
-名前<br>
-<%= f.text_field :talent_name, class:"price-input", id:"item-price", placeholder:"例）300" %><br>
-所属事務所(任意)<br>
-<%= f.text_field :talent_belongs, class:"price-input", id:"item-price", placeholder:"例）300" %><br>
-公式チャンネル(任意)<br>
-<%= f.text_field :talent_channel, class:"price-input", id:"item-price", placeholder:"例）300" %><br>
-公式X(任意)<br>
-<%= f.text_field :talent_x, class:"price-input", id:"item-price", placeholder:"例）300" %><br>
-公式ホームページ(任意)<br>
-<%= f.text_field :talent_hp, class:"price-input", id:"item-price", placeholder:"例）300" %><br>
-投稿者からのコメント(任意)<br>
-<%= f.text_field :message, class:"price-input", id:"item-price", placeholder:"例）300" %><br>
-VTuberタグ(任意)<br>
-<%= f.text_field :talent_tags, class:"talent-tag", id:"talent_firsttag", placeholder:"例）300", maxlength: "20" %>
-<%= f.text_field :talent_tags, class:"talent-tag", id:"talent_secondtag", placeholder:"例）300", maxlength: "20" %>
-<%= f.text_field :talent_tags, class:"talent-tag", id:"talent_thirdtag", placeholder:"例）300", maxlength: "20" %>
-<%= f.text_field :talent_tag_name, class:"talent-tag", id:"talent_tags_merged", placeholder:"ここに左三つを`/$で接続したものを表示" %><br>
+  <label>
+    <p>
+      <span class="Form-Item-Label-Any">任意</span>
+      メイン動画タグ
+    </p>
+    <%= f.text_field :movie_tags, class:'input-style movie-main-tag short-input', id:'movie_firsttag', maxlength: '20', placeholder:'20文字まで' %>
+    <%= f.text_field :movie_tags, class:'input-style movie-main-tag short-input', id:'movie_secondtag', maxlength: '20', placeholder:'20文字まで' %>
+    <%= f.text_field :movie_tags, class:'input-style movie-main-tag short-input', id:'movie_thirdtag', maxlength: '20', placeholder:'20文字まで' %>
+    <%= f.text_field :movie_tag_name, class:'movie-main-tag hidden', id:'movie_main_tags_merged', placeholder:'ここに左三つを`/$で接続したものを表示' %>
+  </label>
 
-<div class="post-btn-contents">
-  <%= f.submit "投稿する" ,class:"post-btn" %>
-  <%=link_to 'もどる', root_path, class:"back-btn" %>
+  <label>
+    <p>
+      <span class="Form-Item-Label-Any">任意</span>
+      オススメ動画1
+    </p>
+    <%= f.text_field :movie_left, class:'input-style url-input', id:'movie_left_form', placeholder:'URLを記入してください' %>
+    <%= f.text_field :movie_left_embedded, class:'hidden', id:'movie_left_embedded_form', placeholder:'11桁のコードが記入されます' %>
+  </label>
+
+  <label>
+    <p>
+      <span class="Form-Item-Label-Any">任意</span>
+      オススメ動画2
+    </p>
+    <%= f.text_field :movie_right, class:'input-style url-input', id:'movie_right_form', placeholder:'URLを記入してください' %>
+    <%= f.text_field :movie_right_embedded, class:'hidden', id:'movie_right_embedded_form', placeholder:'11桁のコードが記入されます' %>
+  </label>
+  
+  <label>
+    <p>
+      <span class="Form-Item-Label-Any">任意</span>
+      VTuberイラスト
+    </p>
+    <%= f.file_field :talent_image, id:'talent-image'%>
+  </label>
+
+  <label>
+    <p>
+    <span class="Form-Item-Label-Required">必須</span>
+    名前
+    </p>
+    <%= f.text_field :talent_name, class:'input-style short-input', id:'item-price', placeholder:'20文字まで' %>
+  </label>
+
+  <label>
+    <p>
+      <span class="Form-Item-Label-Any">任意</span>
+      所属事務所
+    </p>
+    <%= f.text_field :talent_belongs, class:'input-style url-input', id:'item-price', placeholder:'20文字まで' %>
+  </label>
+  
+  <label>
+    <p>
+      <span class="Form-Item-Label-Any">任意</span>
+      公式チャンネル
+    </p>
+    <%= f.text_field :talent_channel, class:'input-style url-input', id:'item-price', placeholder:'URLを記入してください' %>
+  </label>
+
+  <label>
+    <p>
+      <span class="Form-Item-Label-Any">任意</span>
+      公式X
+    </p> 
+    <%= f.text_field :talent_x, class:'input-style url-input', id:'item-price', placeholder:'URLを記入してください' %>
+  </label>
+  
+  <label>
+    <p>
+      <span class="Form-Item-Label-Any">任意</span>
+      公式ホームページ
+    </p>
+    <%= f.text_field :talent_hp, class:'input-style url-input', id:'item-price', placeholder:'URLを記入してください' %>
+  </label>
+
+  <label>
+    <p>
+      <span class="Form-Item-Label-Any">任意</span>
+      投稿者からのコメント
+    </p>
+    <%= f.text_area :message, class:'input-style comment-input', placeholder:'動画やVTuberの魅力についてコメントしましょう！' %>
+  </label>
+
+  <label>
+    <p>
+      <span class="Form-Item-Label-Any">任意</span>
+      VTuberタグ(任意)
+    </p>
+    <%= f.text_field :talent_tags, class:'input-style talent-tag short-input', id:'talent_firsttag', maxlength: '20', placeholder:'20文字まで' %>
+    <%= f.text_field :talent_tags, class:'input-style talent-tag short-input', id:'talent_secondtag', maxlength: '20', placeholder:'20文字まで' %>
+    <%= f.text_field :talent_tags, class:'input-style talent-tag short-input', id:'talent_thirdtag', maxlength: '20', placeholder:'20文字まで' %>
+    <%= f.text_field :talent_tag_name, class:'input-style talent-tag hidden', id:'talent_tags_merged', placeholder:'ここに左三つを`/$で接続したものを表示' %><br>
+  </label>
+
+  <div class='post-btn-contents'>
+    <%= f.submit '投稿する' ,class:'post-btn' %>
+    <%=link_to 'もどる', root_path, class:'back-btn' %>
+  </div>
+  <% end %>
 </div>
-<% end %>
