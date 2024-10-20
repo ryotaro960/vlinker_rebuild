@@ -3,11 +3,15 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :destroy]
 
-  def index  
+  def index
     if params[:movie_tag]
       @posts = Post.search_by_movietag(params[:movie_tag]).order("created_at DESC")
     elsif params[:talent_tag]
       @posts = Post.search_by_talenttag(params[:talent_tag]).order("created_at DESC")
+    elsif params[:talent_name]
+      @posts = Post.where(posts: { talent_name: params[:talent_name] }).order("created_at DESC")
+    elsif params[:talent_belongs]
+      @posts = Post.where(posts: { talent_belongs: params[:talent_belongs] }).order("created_at DESC")
     else
       @posts = Post.all.order("created_at DESC")
     end

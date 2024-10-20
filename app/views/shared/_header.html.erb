@@ -1,17 +1,23 @@
 <div class='header-contents'>
+
   <%= link_to image_tag('vlinker_logo.jpg', class:'vlinker-logo'), root_path %>
+
   <ul class ='lists-left'>
-    <li><%= link_to '動画検索', search_posts_path, class: 'search-bt' %></li>
-    <li><%= link_to '新規投稿', new_post_path, class: 'search-bt' %></li>
+    <%= link_to search_posts_path do %>
+      <li class='search-bt'><p>動画検索</p></li>
+    <% end %>
+    <%= link_to new_post_path do %>
+      <li class='search-bt'><p>新規投稿</p></li>
+    <% end %>
   </ul>
 
   <ul class='lists-right'>
     <% if user_signed_in? %>
       <li><%= render partial: 'shared/user_image', locals: { user: current_user } %></li> 
-      <li><%= link_to 'ログアウト', destroy_user_session_path , data: {turbo_method: :delete}, class: 'user-manage' %></li>
+      <li class='user-manage'><%= link_to 'ログアウト', destroy_user_session_path , data: {turbo_method: :delete} %></li>
     <% else %>
-      <li><%= link_to 'ログイン', new_user_session_path, class: 'user-manage'%></li> 
-      <li><%= link_to '新規登録', new_user_registration_path, class: 'user-manage'%></li> 
+      <li class='user-manage'><%= link_to 'ログイン', new_user_session_path %></li> 
+      <li class='user-manage'><%= link_to '新規登録', new_user_registration_path %></li> 
     <% end %>
   </ul>
 </div>
