@@ -149,3 +149,16 @@ const rightmovie = () => {
 
   window.addEventListener('turbo:load', edit_tag);
   window.addEventListener('turbo:render', edit_tag);
+
+  // ユーザーページ
+
+  const user_image = () => {
+    const form = document.getElementById('user-image-edit')
+    form.addEventListener('change', () => {
+      const btn = document.getElementById('user-image-btn');
+      btn.click();
+    });
+    }
+
+  window.addEventListener('turbo:load', user_image);
+  window.addEventListener('turbo:render', user_image);

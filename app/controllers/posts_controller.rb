@@ -59,6 +59,7 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
     @posts = @q.result.order("created_at DESC")
   end
+  
   private
   
   def set_post

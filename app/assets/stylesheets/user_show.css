@@ -1,0 +1,31 @@
+.user-show{
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.user-image-content{
+  display: block;
+}
+
+#user-image-edit{
+  cursor:pointer
+}
+
+.user-profile{
+display: flex;
+align-items: center;
+margin: 0 64px;
+}
+
+.user-comment-content{
+  width: 400px;
+  line-height: 32px;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+.comment-input{
+  width: 400px;
+  height: 128px;
+}

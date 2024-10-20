@@ -37,8 +37,6 @@ iframe{
   height: 70px;
 }
 
-
-
 .menu-list{
   width: 54px;
   background-color: #ddeeee;
@@ -67,6 +65,16 @@ iframe{
   overflow-wrap: anywhere;
 }
 
+.table-indent{
+  text-indent: 1rem;
+}
+
 .official-link{
   text-align: center;
+}
+
+.show-user-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

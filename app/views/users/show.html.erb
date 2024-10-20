@@ -1,10 +1,43 @@
-<div>
-  <% if @user.user_image.attached? %>
-      <%= image_tag @user.user_image, class:"user-image" %> 
-  <% else %>
-      <%= image_tag "user_icon.png", class:"user-image" %>
-  <% end %>
-ユーザー名：<%= @user.nickname%>
-コメント <%= @user.comment%>
-
-  <%= render partial: "shared/posts_index", locals: { posts: @posts } %>
+<div class='user-show'>
+  <div class='user-profile'>
+    <div class='user-image-content'>
+      <% if @user.user_image.attached? %>
+        <% image_picture = @user.user_image %>
+      <% else %>
+        <% image_picture = 'user_icon.png' %>
+      <% end %>
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <label id='user-image-edit'>
+          <%= image_tag(image_picture, class:'user-image') %>
+          <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
+            <%= f.file_field :user_image, id:'user-image', class:'hidden'%>
+            <%= f.submit '変更する', id:'user-image-btn', class:'hidden' %>
+          <% end %>
+        </label>
+      <% else %>
+        <%= image_tag(image_picture, class:'user-image') %>
+      <% end %>
+    </div>
+    <p>ユーザー名：<%= @user.nickname%></p>
+  </div>
+    <p>コメント：</p>
+    <% if user_signed_in? && current_user.id == @user.id %>
+      <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+        <%= f.text_field :comment, class:'comment-input', placeholder:'こんにちは！' %>
+        <%= f.submit '変更する' ,class:'post-btn' %>
+      <% end %>
+    <% else%>
+      <div class='user-comment'>
+        <% if @user.comment.present? %>
+          <div class='user-comment-content'>
+            <%= @user.comment %>
+          </div>
+        <% else %>
+          こんにちは！
+        <% end %>
+      </div>
+    <% end %>
+</div>
+<h2>過去の投稿</h2>
+  <%= render partial: 'shared/posts_index', locals: { posts: @posts } %>

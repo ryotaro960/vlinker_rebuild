@@ -1,0 +1,12 @@
+<% if user.user_image.attached? %>
+  <% image_picture = user.user_image %>
+<% else %>
+  <% image_picture = 'user_icon.png' %>
+<% end %>
+
+<%= link_to user_path(user.id) do %>
+  <div class='user-image-name'>
+    <%= image_tag(image_picture, class:'user-image') %>
+    <%= user.nickname %>
+  </div>
+<% end %>

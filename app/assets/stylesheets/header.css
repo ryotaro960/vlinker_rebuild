@@ -33,13 +33,6 @@
   margin-right: 40px;
 }
 
-.user-image{
-  width: 72px;
-  height: 72px;
-  border-radius: 36px;
-  overflow: hidden;
-}
-
 .user-manage{
   width: 200px;
   height: 30px;

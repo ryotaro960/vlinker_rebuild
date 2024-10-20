@@ -9,9 +9,9 @@
 <%= f.text_field :movie_main_embedded, class:"price-input", id:"movie_main_embedded_form", placeholder:"例）300" %>
 <%= f.text_field :movie_main_thumbnail, class:"price-input", id:"movie_main_thumbnail_form", placeholder:"例）300" %><br>
 メイン動画タグ(任意)<br>
-<%= f.text_field :movie_tags, class:"movie-main-tag", id:"movie_firsttag", placeholder:"例）300" %>
-<%= f.text_field :movie_tags, class:"movie-main-tag", id:"movie_secondtag", placeholder:"例）300" %>
-<%= f.text_field :movie_tags, class:"movie-main-tag", id:"movie_thirdtag", placeholder:"例）300" %>
+<%= f.text_field :movie_tags, class:"movie-main-tag", id:"movie_firsttag", placeholder:"例）300", maxlength: "20" %>
+<%= f.text_field :movie_tags, class:"movie-main-tag", id:"movie_secondtag", placeholder:"例）300", maxlength: "20" %>
+<%= f.text_field :movie_tags, class:"movie-main-tag", id:"movie_thirdtag", placeholder:"例）300", maxlength: "20" %>
 <%= f.text_field :movie_tag_name, class:"movie-main-tag", id:"movie_main_tags_merged", placeholder:"ここに左三つを`/$で接続したものを表示" %><br>
 サブ動画1(任意)<br>
 <%= f.text_field :movie_left, class:"price-input", id:"movie_left_form", placeholder:"例）300" %>
@@ -34,9 +34,9 @@ VTuberイラスト(任意)<br>
 投稿者からのコメント(任意)<br>
 <%= f.text_field :message, class:"price-input", id:"item-price", placeholder:"例）300" %><br>
 VTuberタグ(任意)<br>
-<%= f.text_field :talent_tags, class:"talent-tag", id:"talent_firsttag", placeholder:"例）300" %>
-<%= f.text_field :talent_tags, class:"talent-tag", id:"talent_secondtag", placeholder:"例）300" %>
-<%= f.text_field :talent_tags, class:"talent-tag", id:"talent_thirdtag", placeholder:"例）300" %>
+<%= f.text_field :talent_tags, class:"talent-tag", id:"talent_firsttag", placeholder:"例）300", maxlength: "20" %>
+<%= f.text_field :talent_tags, class:"talent-tag", id:"talent_secondtag", placeholder:"例）300", maxlength: "20" %>
+<%= f.text_field :talent_tags, class:"talent-tag", id:"talent_thirdtag", placeholder:"例）300", maxlength: "20" %>
 <%= f.text_field :talent_tag_name, class:"talent-tag", id:"talent_tags_merged", placeholder:"ここに左三つを`/$で接続したものを表示" %><br>
 
 <div class="post-btn-contents">
