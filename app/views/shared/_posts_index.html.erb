@@ -7,7 +7,7 @@
           <%= link_to post.message, post_path(post.id), class:'index-message-content' %>
         </div>
       <% end %>
-      <div class='movie-tag-list'>
+      <div class='movie-tag-list index-message-content'>
         関連タグ：
           <% post.movie_tags.each do |tag| %>
             <%= tag.movie_tag_name if tag.present? %>

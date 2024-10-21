@@ -4,10 +4,6 @@
   margin-top: 24px;
 }
 
-.user-image-content{
-  display: block;
-}
-
 #user-image-edit{
   cursor:pointer
 }
@@ -18,14 +14,14 @@ align-items: center;
 margin: 0 64px;
 }
 
-.user-comment-content{
-  width: 400px;
-  line-height: 32px;
-  font-size: 16px;
-  overflow-wrap: anywhere;
+.user-comment{
+  display: flex;
+  align-items: center;
 }
 
-.comment-input{
-  width: 400px;
-  height: 128px;
+.user-comment-content{
+  width: 600px;
+  line-height: 24px;
+  font-size: 16px;
+  overflow-wrap: anywhere;
 }

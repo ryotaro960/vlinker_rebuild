@@ -2,6 +2,25 @@
 margin: 0 0 24px 5%;
 }
 
+.login-form{
+  width: 400px;
+  margin: 0 auto;
+}
+
+.search-form{
+  width: 810px;
+  margin: 0 auto;
+}
+
+.search-group{
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-in-title{
+  text-align: center;
+}
+
 .input-style{
   font-size: 16px;
   border-radius: 5px;
@@ -17,7 +36,7 @@ margin: 0 0 24px 5%;
 }
 
 .url-input{
-  width:80%;
+  width:700px;
 }
 
 .short-input{
@@ -52,11 +71,12 @@ margin: 0 0 24px 5%;
   font-size: 14px;
 }
 
-.url-input{
-  width: 90%;
-}
-
 .post-btn{
   width: 88px;
   height: 32px;
+}
+
+.comment-input{
+  width: 600px;
+  height: 128px;
 }

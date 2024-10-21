@@ -86,7 +86,9 @@
           </div>
         </th></tr>
         <% if @post.message != '' %>
-          <tr><td colspan='2'><%= @post.message %></td></tr>
+          <tr><td colspan='2'>
+            <div class="comment-line-height"><%= @post.message %></div>
+          </td></tr>
         <% else %>
           <tr><td colspan='2'>コメントはまだありません。</td></tr>
         <% end %>

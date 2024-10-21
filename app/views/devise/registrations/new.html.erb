@@ -1,40 +1,58 @@
-<h2>Sign up</h2>
+<div class='login-form'>
+  <h1 class='sign-in-title'>ユーザー新規登録</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render 'devise/shared/error_messages', resource: resource %>
 
-  <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
-  </div>
+    <label class='field'>
+      <p>
+        <span class='Form-Item-Label-Required'>必須</span>
+        ニックネーム
+      </p>
+      <%= f.text_field :nickname, autofocus: true, autocomplete: 'nickname', class:'input-style short-input'%>
+    </label>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <label class='field'>
+      <p>
+        <span class='Form-Item-Label-Required'>必須</span>
+        email
+      </p>
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class:'input-style short-input' %>
+    </label>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <label class='field'>
+      <p>
+        <span class='Form-Item-Label-Required'>必須</span>
+        パスワード
+      </p>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> 文字以上)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: 'new-password', class:'input-style short-input' %>
+    </label>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <label class='field'>
+      <p>
+        <span class='Form-Item-Label-Required'>必須</span>
+        パスワード(再入力)
+      </p>
+      <%= f.password_field :password_confirmation, autocomplete: 'new-password', class:'input-style short-input' %>
+    </label>
 
-  <div class="field">
-    <%= f.label :user_image %>アイコンを使用できます(任意)<br />
-    <%= f.file_field :user_image %>
-  </div>
+    <label class='field'>
+      <p>
+        <span class='Form-Item-Label-Any'>任意</span>
+        アイコンを使用できます
+      </p>
+      <%= f.file_field :user_image %>
+    </label>
+    <br><br>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class='actions'>
+      <%= f.submit '登録する', class:'post-btn' %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render 'devise/shared/links' %>
 
+</div>

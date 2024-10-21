@@ -65,6 +65,10 @@ iframe{
   overflow-wrap: anywhere;
 }
 
+.comment-line-height{
+  line-height: 24px;
+}
+
 .table-indent{
   text-indent: 1rem;
 }
