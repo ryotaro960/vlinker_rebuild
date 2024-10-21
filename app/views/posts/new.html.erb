@@ -30,6 +30,8 @@
     <%= f.text_field :movie_tags, class:'input-style movie-main-tag short-input', id:'movie_thirdtag', maxlength: '20', placeholder:'20文字まで' %>
     <%= f.text_field :movie_tag_name, class:'movie-main-tag hidden', id:'movie_main_tags_merged', placeholder:'ここに左三つを`/$で接続したものを表示' %>
   </label>
+  <p>動画タグ例(クリックで入力できます)<p>
+  <%= render partial: "shared/movie_tag_list" %>
 
   <label>
     <p>
@@ -126,6 +128,8 @@
     <%= f.text_field :talent_tags, class:'input-style talent-tag short-input', id:'talent_thirdtag', maxlength: '20', placeholder:'20文字まで' %>
     <%= f.text_field :talent_tag_name, class:'input-style talent-tag hidden', id:'talent_tags_merged', placeholder:'ここに左三つを`/$で接続したものを表示' %><br>
   </label>
+  <p>VTuberタグ例(クリックで入力できます)<p>
+  <%= render partial: "shared/talent_tag_list" %>
 
   <div class='post-btn-contents'>
     <%= f.submit '投稿する', class:'post-btn' %>

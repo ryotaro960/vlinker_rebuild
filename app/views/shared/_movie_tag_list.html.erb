@@ -1,0 +1,9 @@
+<% movie_tag=['歌ってみた', '歌ってみた_J-POP', '歌ってみた_アニソン', 
+'歌ってみた_ボカロ', 'ゲーム実況', 'ゲーム実況_アクション', 'ゲーム実況_シューティング', 
+'ゲーム実況_ホラーゲーム', 'ライブ配信', '雑談', '歌枠', 'マシュマロ読み'] %>
+
+<div class='all-tag-lists'>
+  <% movie_tag.each do |tag| %>
+    <div class='each-tag-contents'><%= tag %></div>
+  <% end %>
+</div>

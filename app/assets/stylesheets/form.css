@@ -84,3 +84,18 @@ margin: 0 0 24px 5%;
   width: 600px;
   height: 128px;
 }
+
+.all-tag-lists{
+  display: flex;
+  flex-wrap:wrap;
+}
+
+.each-tag-contents{
+  padding: 8px;
+  margin: 0 24px 12px 24px;
+  font-size: 16px;
+  line-height: 24px;
+  background-color: #dddddd;
+  border-radius: 3px;
+  overflow: hidden;
+}
