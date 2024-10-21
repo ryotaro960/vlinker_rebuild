@@ -71,6 +71,10 @@ margin: 0 0 24px 5%;
   font-size: 14px;
 }
 
+.movie_preview_content{
+  display: flex;
+}
+
 .post-btn{
   width: 88px;
   height: 32px;

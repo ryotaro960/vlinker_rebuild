@@ -10,9 +10,18 @@
       <span class="Form-Item-Label-Required">必須</span>
       イチオシ動画
     </p>
-  <%= f.text_field :movie_main, class:'input-style url-input', id:'movie_main_form', placeholder:'URLを記入してください' %>
-  <%= f.text_field :movie_main_embedded, class:'hidden', id:'movie_main_embedded_form', placeholder:'11桁のコードが記入されます' %>
-  <%= f.text_field :movie_main_thumbnail, class:'hidden', id:'movie_main_thumbnail_form', placeholder:'サムネイル表示のためのURLが記入されます'%>
+    <div class='movie_preview_content'>
+      <div>
+        <%= f.text_field :movie_main, class:'input-style url-input', id:'movie_main_form', placeholder:'URLを記入してください' %>
+        <%= f.text_field :movie_main_embedded, class:'hidden', id:'movie_main_embedded_form', placeholder:'11桁のコードが記入されます' %>
+        <%= f.text_field :movie_main_thumbnail, class:'hidden', id:'movie_main_thumbnail_form', placeholder:'サムネイル表示のためのURLが記入されます'%>
+      </div>
+      <div id='main-movie-previews'>
+        <div class='main-movie-preview'>
+          <%= image_tag @post.movie_main_thumbnail, class:'index-thumbnail' %>
+        </div>
+      </div>
+    </div>
   </label>
 
   <label>
@@ -20,6 +29,7 @@
       <span class="Form-Item-Label-Any">任意</span>
       メイン動画タグ
     </p>
+
     <%= f.text_field :movie_tags, class:'input-style movie-main-tag short-input', id:'movie_firsttag', maxlength: '20', placeholder:'20文字まで' %>
     <%= f.text_field :movie_tags, class:'input-style movie-main-tag short-input', id:'movie_secondtag', maxlength: '20', placeholder:'20文字まで' %>
     <%= f.text_field :movie_tags, class:'input-style movie-main-tag short-input', id:'movie_thirdtag', maxlength: '20', placeholder:'20文字まで' %>
@@ -31,8 +41,17 @@
       <span class="Form-Item-Label-Any">任意</span>
       オススメ動画1
     </p>
-    <%= f.text_field :movie_left, class:'input-style url-input', id:'movie_left_form', placeholder:'URLを記入してください' %>
-    <%= f.text_field :movie_left_embedded, class:'hidden', id:'movie_left_embedded_form', placeholder:'11桁のコードが記入されます' %>
+    <div class='movie_preview_content'>
+      <div>
+        <%= f.text_field :movie_left, class:'input-style url-input', id:'movie_left_form', placeholder:'URLを記入してください' %>
+        <%= f.text_field :movie_left_embedded, class:'hidden', id:'movie_left_embedded_form', placeholder:'11桁のコードが記入されます' %>
+      </div>
+      <div id='left-movie-previews'>
+        <div class='left-movie-preview'>
+          <%= (image_tag "https://img.youtube.com/vi/#{@post.movie_left_embedded}/hqdefault.jpg", class:'index-thumbnail') if @post.movie_left_embedded.present?%>
+        </div>
+      </div>
+    </div>
   </label>
 
   <label>
@@ -40,8 +59,17 @@
       <span class="Form-Item-Label-Any">任意</span>
       オススメ動画2
     </p>
-    <%= f.text_field :movie_right, class:'input-style url-input', id:'movie_right_form', placeholder:'URLを記入してください' %>
-    <%= f.text_field :movie_right_embedded, class:'hidden', id:'movie_right_embedded_form', placeholder:'11桁のコードが記入されます' %>
+    <div class='movie_preview_content'>
+      <div>
+        <%= f.text_field :movie_right, class:'input-style url-input', id:'movie_right_form', placeholder:'URLを記入してください' %>
+        <%= f.text_field :movie_right_embedded, class:'hidden', id:'movie_right_embedded_form', placeholder:'11桁のコードが記入されます' %>
+      </div>
+      <div id='right-movie-previews'>
+        <div class='right-movie-preview'>
+          <%= (image_tag "https://img.youtube.com/vi/#{@post.movie_right_embedded}/hqdefault.jpg", class:'index-thumbnail') if @post.movie_right_embedded.present?%>
+        </div>
+      </div>
+    </div>
   </label>
   
   <label>

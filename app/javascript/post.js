@@ -6,6 +6,7 @@ const userPostImage = () => {
   const fileField = document.querySelector('input[type="file"][name="user[user_image]"]');
   fileField.addEventListener('change', function(e){
     const file = e.target.files[0];
+    
     const alreadyPreview = document.querySelector('.preview');
     if (alreadyPreview) {
       alreadyPreview.remove();
@@ -43,13 +44,32 @@ const mainMovie = () => {
     } else if(sliceshorts > 0) {
       sliceplace = sliceshorts;
     }
+
+    const alreadyPreview = document.querySelector('.main-movie-preview');
+    if (alreadyPreview) {
+      alreadyPreview.remove();
+    };
+
     if(sliceplace > 0) {
-      const movieid = form.value.substr( sliceplace + 8, 11 );
+      const movieId = form.value.substr( sliceplace + 8, 11 );
       const movieMainEmbeddedForm  = document.getElementById('movie_main_embedded_form');
       movieMainEmbeddedForm.value = movieId;
       const movieMainThumbnailForm  = document.getElementById('movie_main_thumbnail_form');
-      movieMainThumbnailForm.value = 'https://img.youtube.com/vi/' + movieId + '/hqdefault.jpg'
+      const mainMovieThumbnail = 'https://img.youtube.com/vi/' + movieId + '/hqdefault.jpg';
+      movieMainThumbnailForm.value = mainMovieThumbnail
+
+      const previewWrapper = document.createElement('div');
+      previewWrapper.setAttribute('class', 'main-movie-preview');
+  
+      const previewImage = document.createElement('img');
+      previewImage.setAttribute('class', 'index-thumbnail');
+      previewImage.src = mainMovieThumbnail;
+  
+      const previewList = document.getElementById('main-movie-previews');
+      previewWrapper.appendChild(previewImage);
+      previewList.appendChild(previewWrapper);
     } else {
+
       document.getElementById('movie_main_embedded_form').value = '';
       document.getElementById('movie_main_thumbnail_form').value = '';
     }
@@ -72,10 +92,29 @@ form.addEventListener('blur', () => {
   } else if(sliceshorts > 0) {
     sliceplace = sliceshorts;
   }
+
+  const alreadyPreview = document.querySelector('.left-movie-preview');
+  if (alreadyPreview) {
+    alreadyPreview.remove();
+  };
+
   if(sliceplace > 0) {
     const movieId = form.value.substr( sliceplace + 8, 11 );
     const movieLeftEmbeddedForm  = document.getElementById('movie_left_embedded_form');
     movieLeftEmbeddedForm.value = movieId;
+
+    const leftMovieThumbnail = 'https://img.youtube.com/vi/' + movieId + '/hqdefault.jpg';
+
+    const previewWrapper = document.createElement('div');
+    previewWrapper.setAttribute('class', 'left-movie-preview');
+
+    const previewImage = document.createElement('img');
+    previewImage.setAttribute('class', 'index-thumbnail');
+    previewImage.src = leftMovieThumbnail;
+
+    const previewList = document.getElementById('left-movie-previews');
+    previewWrapper.appendChild(previewImage);
+    previewList.appendChild(previewWrapper);
   } else {
     document.getElementById('movie_left_embedded_form').value = '';
   }
@@ -98,10 +137,30 @@ form.addEventListener('blur', () => {
   } else if(sliceshorts > 0) {
     sliceplace = sliceshorts;
   }
+
+  const alreadyPreview = document.querySelector('.right-movie-preview');
+  if (alreadyPreview) {
+    alreadyPreview.remove();
+  };
+
   if(sliceplace > 0) {
     const movieId = form.value.substr( sliceplace + 8, 11 );
     const movieRightEmbeddedForm  = document.getElementById('movie_right_embedded_form');
     movieRightEmbeddedForm.value = movieId;
+
+    const rightMovieThumbnail = 'https://img.youtube.com/vi/' + movieId + '/hqdefault.jpg';
+
+    const previewWrapper = document.createElement('div');
+    previewWrapper.setAttribute('class', 'right-movie-preview');
+
+    const previewImage = document.createElement('img');
+    previewImage.setAttribute('class', 'index-thumbnail');
+    previewImage.src = rightMovieThumbnail;
+
+    const previewList = document.getElementById('right-movie-previews');
+    previewWrapper.appendChild(previewImage);
+    previewList.appendChild(previewWrapper);
+
   } else {
     document.getElementById('movie_right_embedded_form').value = '';
   }
