@@ -50,7 +50,13 @@
       VTuberイラスト
     </p>
     <%= f.file_field :talent_image, id:'talent-image-post'%>
-    <div id="talent-previews"></div>
+    <div id='talent-previews'>
+      <% if @post.talent_image.attached? %>
+        <div class='talent-preview'>
+          <%= image_tag @post.talent_image, class:'talent-image' %>
+        </div>
+      <% end %>
+    </div>
   </label>
 
   <label>

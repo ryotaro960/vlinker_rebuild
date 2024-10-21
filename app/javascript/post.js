@@ -1,3 +1,33 @@
+// ユーザー新規登録ページ
+
+const userPostImage = () => {
+  const userPostForm = document.querySelectorAll('new_user');
+  if (!userPostForm) return null;
+  const fileField = document.querySelector('input[type="file"][name="user[user_image]"]');
+  fileField.addEventListener('change', function(e){
+    const file = e.target.files[0];
+    const alreadyPreview = document.querySelector('.preview');
+    if (alreadyPreview) {
+      alreadyPreview.remove();
+    };
+    const blob = window.URL.createObjectURL(file);
+
+    const previewWrapper = document.createElement('div');
+    previewWrapper.setAttribute('class', 'preview');
+
+    const previewImage = document.createElement('img');
+    previewImage.setAttribute('class', 'user-image');
+    previewImage.setAttribute('src', blob);
+
+    const previewList = document.getElementById('user-previews');
+    previewWrapper.appendChild(previewImage);
+    previewList.appendChild(previewWrapper);
+  });
+};
+
+window.addEventListener('turbo:load', userPostImage);
+window.addEventListener('turbo:render', userPostImage);
+
 // 投稿ページ
 
 const mainMovie = () => {
@@ -88,14 +118,14 @@ const talentImage = () => {
   const fileField = document.querySelector('input[type="file"][name="post_form[talent_image]"]');
   fileField.addEventListener('change', function(e){
     const file = e.target.files[0];
-    const alreadyPreview = document.querySelector('.preview');
+    const alreadyPreview = document.querySelector('.talent-preview');
     if (alreadyPreview) {
       alreadyPreview.remove();
     };
     const blob = window.URL.createObjectURL(file);
 
     const previewWrapper = document.createElement('div');
-    previewWrapper.setAttribute('class', 'preview');
+    previewWrapper.setAttribute('class', 'talent-preview');
 
     const previewImage = document.createElement('img');
     previewImage.setAttribute('class', 'talent-image');
@@ -152,8 +182,8 @@ const menubtn = () => {
   const pullDownButton = document.getElementById('menu-btn');
   const pullDownParents = document.getElementById('menu_lists');
 
-  if (!pullDownButton) return null;
-  if (!pullDownParents) return null;
+  // if (!pullDownButton) return null;
+  // if (!pullDownParents) return null;
 
   pullDownButton.addEventListener('mouseover', () => {
   pullDownParents.setAttribute("style", "display:block;");
@@ -169,7 +199,7 @@ window.addEventListener('turbo:render', menubtn);
 
   // 編集ページ
 
-const edit_tag = () => {
+const editTag = () => {
 
   const movieTagsMerged  = document.getElementById('movie_main_tags_merged').value;
   const movie_tag_split = movieTagsMerged.split('`/$');
@@ -184,8 +214,8 @@ const edit_tag = () => {
   document.getElementById('talent_thirdtag').value = talent_tag_split[2];
 };
 
-window.addEventListener('turbo:load', edit_tag);
-window.addEventListener('turbo:render', edit_tag);
+window.addEventListener('turbo:load', editTag);
+window.addEventListener('turbo:render', editTag);
 
   // ユーザーページ
 

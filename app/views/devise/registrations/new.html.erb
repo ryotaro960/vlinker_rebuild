@@ -1,7 +1,7 @@
 <div class='login-form'>
   <h1 class='sign-in-title'>ユーザー新規登録</h1>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), id:'new_user') do |f| %>
     <%= render 'devise/shared/error_messages', resource: resource %>
 
     <label class='field'>
@@ -45,6 +45,7 @@
         アイコンを使用できます
       </p>
       <%= f.file_field :user_image %>
+      <div id="user-previews"></div>
     </label>
     <br><br>
 
