@@ -1,6 +1,6 @@
 // 投稿ページ
 
-const mainmovie = () => {
+const mainMovie = () => {
   const form = document.getElementById('movie_main_form')
   if (!form) return null;
   form.addEventListener('blur', () => {
@@ -16,9 +16,9 @@ const mainmovie = () => {
     if(sliceplace > 0) {
       const movieid = form.value.substr( sliceplace + 8, 11 );
       const movieMainEmbeddedForm  = document.getElementById('movie_main_embedded_form');
-      movieMainEmbeddedForm.value = movieid;
+      movieMainEmbeddedForm.value = movieId;
       const movieMainThumbnailForm  = document.getElementById('movie_main_thumbnail_form');
-      movieMainThumbnailForm.value = 'https://img.youtube.com/vi/' + movieid + '/hqdefault.jpg'
+      movieMainThumbnailForm.value = 'https://img.youtube.com/vi/' + movieId + '/hqdefault.jpg'
     } else {
       document.getElementById('movie_main_embedded_form').value = '';
       document.getElementById('movie_main_thumbnail_form').value = '';
@@ -26,11 +26,11 @@ const mainmovie = () => {
   });
  };
  
-window.addEventListener('turbo:load', mainmovie);
-window.addEventListener('turbo:render', mainmovie);
+window.addEventListener('turbo:load', mainMovie);
+window.addEventListener('turbo:render', mainMovie);
 
 
-const leftmovie = () => {
+const leftMovie = () => {
 const form = document.getElementById('movie_left_form')
 if (!form) return null;
 form.addEventListener('blur', () => {
@@ -43,20 +43,20 @@ form.addEventListener('blur', () => {
     sliceplace = sliceshorts;
   }
   if(sliceplace > 0) {
-    const movieid = form.value.substr( sliceplace + 8, 11 );
+    const movieId = form.value.substr( sliceplace + 8, 11 );
     const movieLeftEmbeddedForm  = document.getElementById('movie_left_embedded_form');
-    movieLeftEmbeddedForm.value = movieid;
+    movieLeftEmbeddedForm.value = movieId;
   } else {
     document.getElementById('movie_left_embedded_form').value = '';
   }
 });
 }
 
-window.addEventListener('turbo:load', leftmovie);
-window.addEventListener('turbo:render', leftmovie);
+window.addEventListener('turbo:load', leftMovie);
+window.addEventListener('turbo:render', leftMovie);
 
 
-const rightmovie = () => {
+const rightMovie = () => {
 const form = document.getElementById('movie_right_form')
 if (!form) return null;
 form.addEventListener('blur', () => {
@@ -69,53 +69,82 @@ form.addEventListener('blur', () => {
     sliceplace = sliceshorts;
   }
   if(sliceplace > 0) {
-    const movieid = form.value.substr( sliceplace + 8, 11 );
+    const movieId = form.value.substr( sliceplace + 8, 11 );
     const movieRightEmbeddedForm  = document.getElementById('movie_right_embedded_form');
-    movieRightEmbeddedForm.value = movieid;
+    movieRightEmbeddedForm.value = movieId;
   } else {
     document.getElementById('movie_right_embedded_form').value = '';
   }
 });
 }
 
-window.addEventListener('turbo:load', rightmovie);
-window.addEventListener('turbo:render', rightmovie);
+window.addEventListener('turbo:load', rightMovie);
+window.addEventListener('turbo:render', rightMovie);
 
 
-const movietag = () => {
+const talentImage = () => {
+  const form = document.querySelectorAll('new_post');
+  if (!form) return null;
+  const fileField = document.querySelector('input[type="file"][name="post_form[talent_image]"]');
+  fileField.addEventListener('change', function(e){
+    const file = e.target.files[0];
+    const alreadyPreview = document.querySelector('.preview');
+    if (alreadyPreview) {
+      alreadyPreview.remove();
+    };
+    const blob = window.URL.createObjectURL(file);
+
+    const previewWrapper = document.createElement('div');
+    previewWrapper.setAttribute('class', 'preview');
+
+    const previewImage = document.createElement('img');
+    previewImage.setAttribute('class', 'talent-image');
+    previewImage.setAttribute('src', blob);
+
+    const previewList = document.getElementById('talent-previews');
+    previewWrapper.appendChild(previewImage);
+    previewList.appendChild(previewWrapper);
+  });
+};
+
+window.addEventListener('turbo:load', talentImage);
+window.addEventListener('turbo:render', talentImage);
+
+
+const movieTag = () => {
   const textFields = document.querySelectorAll('.movie-main-tag');
   if (!textFields) return null;
   textFields.forEach(textField => {
     textField.addEventListener('blur', (event) => {
-      const movieFirsttag  = document.getElementById('movie_firsttag');
-      const movieSecondtag  = document.getElementById('movie_secondtag');
-      const movieThirdtag  = document.getElementById('movie_thirdtag');
+      const movieFirstTag  = document.getElementById('movie_firsttag');
+      const movieSecondTag  = document.getElementById('movie_secondtag');
+      const movieThirdTag  = document.getElementById('movie_thirdtag');
       const movieMainTagsMerged  = document.getElementById('movie_main_tags_merged');
-      movieMainTagsMerged.value = movieFirsttag.value + '`/$' + movieSecondtag.value + '`/$' + movieThirdtag.value
+      movieMainTagsMerged.value = movieFirstTag.value + '`/$' + movieSecondTag.value + '`/$' + movieThirdTag.value
     });
   });
 };
 
-window.addEventListener('turbo:load', movietag);
-window.addEventListener('turbo:render', movietag);
+window.addEventListener('turbo:load', movieTag);
+window.addEventListener('turbo:render', movieTag);
 
 
-const talenttag = () => {
+const talentTag = () => {
   const textFields = document.querySelectorAll('.talent-tag');
   if (!textFields) return null;
   textFields.forEach(textField => {
     textField.addEventListener('blur', (event) => {
-      const talentFirsttag  = document.getElementById('talent_firsttag');
-      const talentSecondtag  = document.getElementById('talent_secondtag');
-      const talentThirdtag  = document.getElementById('talent_thirdtag');
+      const talentFirstTag  = document.getElementById('talent_firsttag');
+      const talentSecondTag  = document.getElementById('talent_secondtag');
+      const talentThirdTag  = document.getElementById('talent_thirdtag');
       const talentTagsMerged  = document.getElementById('talent_tags_merged');
-      talentTagsMerged.value = talentFirsttag.value + '`/$' + talentSecondtag.value + '`/$' + talentThirdtag.value
+      talentTagsMerged.value = talentFirstTag.value + '`/$' + talentSecondTag.value + '`/$' + talentThirdTag.value
     });
   });
 };
 
-window.addEventListener('turbo:load', talenttag);
-window.addEventListener('turbo:render', talenttag);
+window.addEventListener('turbo:load', talentTag);
+window.addEventListener('turbo:render', talentTag);
 
   // 詳細ページ
 
@@ -160,7 +189,7 @@ window.addEventListener('turbo:render', edit_tag);
 
   // ユーザーページ
 
-const user_image = () => {
+const userImage = () => {
   const form = document.getElementById('user-image-edit')
   if (!form) return null;
   form.addEventListener('change', () => {
@@ -169,5 +198,5 @@ const user_image = () => {
   });
   }
 
-window.addEventListener('turbo:load', user_image);
-window.addEventListener('turbo:render', user_image);
+window.addEventListener('turbo:load', userImage);
+window.addEventListener('turbo:render', userImage);
