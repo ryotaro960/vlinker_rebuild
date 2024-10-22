@@ -29,4 +29,5 @@
   <% end %>
 </div>
 
-<%= render partial: "shared/posts_index", locals: { posts: @posts } %>
+<% posts_uniq = @posts.uniq %>
+<%= render partial: "shared/posts_index", locals: { posts: posts_uniq } %>

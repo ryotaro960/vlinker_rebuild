@@ -73,7 +73,6 @@ const mainMovie = () => {
       document.getElementById('movie_main_embedded_form').value = '';
       document.getElementById('movie_main_thumbnail_form').value = '';
     }
-    console.log('8')
   });
  };
  
