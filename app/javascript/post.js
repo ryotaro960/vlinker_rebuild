@@ -34,7 +34,7 @@ window.addEventListener('turbo:render', userPostImage);
 const mainMovie = () => {
   const form = document.getElementById('movie_main_form')
   if (!form) return null;
-  form.addEventListener('blur', () => {
+  form.addEventListener('input', () => {
 
     const slicewatch = form.value.indexOf('watch?v=');
     const sliceshorts = form.value.indexOf('/shorts/');
@@ -83,7 +83,7 @@ window.addEventListener('turbo:render', mainMovie);
 const leftMovie = () => {
 const form = document.getElementById('movie_left_form')
 if (!form) return null;
-form.addEventListener('blur', () => {
+form.addEventListener('input', () => {
   const slicewatch = form.value.indexOf('watch?v=');
   const sliceshorts = form.value.indexOf('/shorts/');
   let sliceplace = 0;
@@ -128,7 +128,7 @@ window.addEventListener('turbo:render', leftMovie);
 const rightMovie = () => {
 const form = document.getElementById('movie_right_form')
 if (!form) return null;
-form.addEventListener('blur', () => {
+form.addEventListener('input', () => {
   const slicewatch = form.value.indexOf('watch?v=');
   const sliceshorts = form.value.indexOf('/shorts/');
   let sliceplace = 0;
@@ -218,6 +218,31 @@ window.addEventListener('turbo:load', movieTag);
 window.addEventListener('turbo:render', movieTag);
 
 
+const movieTagInput = () => {
+  const tagFields = document.querySelectorAll('.movie-tag-contents');
+  if (!tagFields) return null;
+  tagFields.forEach(element => {
+    element.addEventListener("click", function(e){
+    const movieFirstTag  = document.getElementById('movie_firsttag');
+    const movieSecondTag  = document.getElementById('movie_secondtag');
+    const movieThirdTag  = document.getElementById('movie_thirdtag');
+    if (!movieFirstTag.value){
+      movieFirstTag.value = e.target.textContent
+    } else if (!movieSecondTag.value){
+      movieSecondTag.value = e.target.textContent
+    } else {
+      movieThirdTag.value = e.target.textContent
+    }
+    const movieMainTagsMerged  = document.getElementById('movie_main_tags_merged');
+    movieMainTagsMerged.value = movieFirstTag.value + '`/$' + movieSecondTag.value + '`/$' + movieThirdTag.value
+    });
+  });
+};
+
+window.addEventListener('turbo:load', movieTagInput);
+window.addEventListener('turbo:render', movieTagInput);
+
+
 const talentTag = () => {
   const textFields = document.querySelectorAll('.talent-tag');
   if (!textFields) return null;
@@ -234,6 +259,30 @@ const talentTag = () => {
 
 window.addEventListener('turbo:load', talentTag);
 window.addEventListener('turbo:render', talentTag);
+
+
+const talentTagInput = () => {
+  const tagFields = document.querySelectorAll('.talent-tag-contents');
+  if (!tagFields) return null;
+  tagFields.forEach(element => {
+    element.addEventListener("click", function(e){
+      const talentFirstTag  = document.getElementById('talent_firsttag');
+      const talentSecondTag  = document.getElementById('talent_secondtag');
+      const talentThirdTag  = document.getElementById('talent_thirdtag');
+      if (!talentFirstTag.value){
+        talentFirstTag.value = e.target.textContent
+      } else if (!talentSecondTag.value){
+        talentSecondTag.value = e.target.textContent
+      } else {
+        talentThirdTag.value = e.target.textContent
+      };
+      const talentTagsMerged  = document.getElementById('talent_tags_merged');
+      talentTagsMerged.value = talentFirstTag.value + '`/$' + talentSecondTag.value + '`/$' + talentThirdTag.value
+    });
+  })};
+
+window.addEventListener('turbo:load', talentTagInput);
+window.addEventListener('turbo:render', talentTagInput);
 
   // 詳細ページ
 

@@ -8,7 +8,7 @@ margin: 0 0 24px 5%;
 }
 
 .search-form{
-  width: 810px;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -90,7 +90,11 @@ margin: 0 0 24px 5%;
   flex-wrap:wrap;
 }
 
-.each-tag-contents{
+.tag-list-title{
+  margin-left: 24px;
+}
+
+.talent-tag-contents, .movie-tag-contents{
   padding: 8px;
   margin: 0 24px 12px 24px;
   font-size: 16px;
@@ -98,4 +102,5 @@ margin: 0 0 24px 5%;
   background-color: #dddddd;
   border-radius: 3px;
   overflow: hidden;
+  cursor:pointer
 }
