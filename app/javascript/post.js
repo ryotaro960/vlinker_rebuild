@@ -73,6 +73,7 @@ const mainMovie = () => {
       document.getElementById('movie_main_embedded_form').value = '';
       document.getElementById('movie_main_thumbnail_form').value = '';
     }
+    console.log('8')
   });
  };
  
@@ -204,7 +205,7 @@ const movieTag = () => {
   const textFields = document.querySelectorAll('.movie-main-tag');
   if (!textFields) return null;
   textFields.forEach(textField => {
-    textField.addEventListener('blur', (event) => {
+    textField.addEventListener('input', (event) => {
       const movieFirstTag  = document.getElementById('movie_firsttag');
       const movieSecondTag  = document.getElementById('movie_secondtag');
       const movieThirdTag  = document.getElementById('movie_thirdtag');
@@ -218,41 +219,79 @@ window.addEventListener('turbo:load', movieTag);
 window.addEventListener('turbo:render', movieTag);
 
 
-const movieTagInput = () => {
+let movieTagHandler = true
+const renderMovieTagInput = () => {
   const tagFields = document.querySelectorAll('.movie-tag-contents');
   if (!tagFields) return null;
   tagFields.forEach(element => {
     element.addEventListener("click", function(e){
-    const movieFirstTag  = document.getElementById('movie_firsttag');
-    const movieSecondTag  = document.getElementById('movie_secondtag');
-    const movieThirdTag  = document.getElementById('movie_thirdtag');
-    if (!movieFirstTag.value){
-      movieFirstTag.value = e.target.textContent
-    } else if (!movieSecondTag.value){
-      movieSecondTag.value = e.target.textContent
+    if (document.getElementById('search-movie-tag')){
+      // 検索ページでの処理
+      document.getElementById('search-movie-tag').value = e.target.textContent;
     } else {
-      movieThirdTag.value = e.target.textContent
-    }
-    const movieMainTagsMerged  = document.getElementById('movie_main_tags_merged');
-    movieMainTagsMerged.value = movieFirstTag.value + '`/$' + movieSecondTag.value + '`/$' + movieThirdTag.value
+      // 投稿、編集ページでの処理
+      const movieFirstTag  = document.getElementById('movie_firsttag');
+      const movieSecondTag  = document.getElementById('movie_secondtag');
+      const movieThirdTag  = document.getElementById('movie_thirdtag');
+      if (!movieFirstTag.value){
+        movieFirstTag.value = e.target.textContent;
+      } else if (!movieSecondTag.value){
+        movieSecondTag.value = e.target.textContent;
+      } else {
+        movieThirdTag.value = e.target.textContent;
+      }
+      const movieMainTagsMerged  = document.getElementById('movie_main_tags_merged');
+      movieMainTagsMerged.value = movieFirstTag.value + '`/$' + movieSecondTag.value + '`/$' + movieThirdTag.value;
+      movieTagHandler = false
+    };
     });
   });
 };
 
-window.addEventListener('turbo:load', movieTagInput);
-window.addEventListener('turbo:render', movieTagInput);
+window.addEventListener('turbo:render', renderMovieTagInput);
+
+const loadMovieTagInput = () => {
+  const tagFields = document.querySelectorAll('.movie-tag-contents');
+  if (!tagFields) return null;
+  tagFields.forEach(element => {
+    element.addEventListener("click", function(e){
+      if (movieTagHandler){
+        if (document.getElementById('search-movie-tag')){
+          // 検索ページでの処理
+          document.getElementById('search-movie-tag').value = e.target.textContent;
+        } else {
+          // 投稿、編集ページでの処理
+          const movieFirstTag  = document.getElementById('movie_firsttag');
+          const movieSecondTag  = document.getElementById('movie_secondtag');
+          const movieThirdTag  = document.getElementById('movie_thirdtag');
+          if (!movieFirstTag.value){
+            movieFirstTag.value = e.target.textContent;
+          } else if (!movieSecondTag.value){
+            movieSecondTag.value = e.target.textContent;
+          } else {
+            movieThirdTag.value = e.target.textContent;
+          };
+          const movieMainTagsMerged  = document.getElementById('movie_main_tags_merged');
+          movieMainTagsMerged.value = movieFirstTag.value + '`/$' + movieSecondTag.value + '`/$' + movieThirdTag.value;
+        };
+      };
+    });
+  });
+};
+
+window.addEventListener('turbo:load', loadMovieTagInput);
 
 
 const talentTag = () => {
   const textFields = document.querySelectorAll('.talent-tag');
   if (!textFields) return null;
   textFields.forEach(textField => {
-    textField.addEventListener('blur', (event) => {
+    textField.addEventListener('input', (event) => {
       const talentFirstTag  = document.getElementById('talent_firsttag');
       const talentSecondTag  = document.getElementById('talent_secondtag');
       const talentThirdTag  = document.getElementById('talent_thirdtag');
       const talentTagsMerged  = document.getElementById('talent_tags_merged');
-      talentTagsMerged.value = talentFirstTag.value + '`/$' + talentSecondTag.value + '`/$' + talentThirdTag.value
+      talentTagsMerged.value = talentFirstTag.value + '`/$' + talentSecondTag.value + '`/$' + talentThirdTag.value;
     });
   });
 };
@@ -261,37 +300,74 @@ window.addEventListener('turbo:load', talentTag);
 window.addEventListener('turbo:render', talentTag);
 
 
-const talentTagInput = () => {
+let talentTagHandler = true
+const renderTalentTagInput = () => {
   const tagFields = document.querySelectorAll('.talent-tag-contents');
   if (!tagFields) return null;
   tagFields.forEach(element => {
     element.addEventListener("click", function(e){
+      if (document.getElementById('search-talent-tag')){
+        // 検索ページでの処理
+        document.getElementById('search-talent-tag').value = e.target.textContent;
+      } else {
+        // 投稿、編集ページでの処理
       const talentFirstTag  = document.getElementById('talent_firsttag');
       const talentSecondTag  = document.getElementById('talent_secondtag');
       const talentThirdTag  = document.getElementById('talent_thirdtag');
       if (!talentFirstTag.value){
-        talentFirstTag.value = e.target.textContent
+        talentFirstTag.value = e.target.textContent;
       } else if (!talentSecondTag.value){
-        talentSecondTag.value = e.target.textContent
+        talentSecondTag.value = e.target.textContent;
       } else {
-        talentThirdTag.value = e.target.textContent
+        talentThirdTag.value = e.target.textContent;
       };
       const talentTagsMerged  = document.getElementById('talent_tags_merged');
-      talentTagsMerged.value = talentFirstTag.value + '`/$' + talentSecondTag.value + '`/$' + talentThirdTag.value
+      talentTagsMerged.value = talentFirstTag.value + '`/$' + talentSecondTag.value + '`/$' + talentThirdTag.value;
+      talentTagHandler = false ;
+    }});
+  });
+};
+
+window.addEventListener('turbo:render', renderTalentTagInput);
+
+const loadTalentTagInput = () => {
+  const tagFields = document.querySelectorAll('.talent-tag-contents');
+  if (!tagFields) return null;
+  tagFields.forEach(element => {
+    element.addEventListener("click", function(e){
+      if (talentTagHandler){
+        if (document.getElementById('search-talent-tag')){
+          // 検索ページでの処理
+          document.getElementById('search-talent-tag').value = e.target.textContent;
+        } else {
+          // 投稿、編集ページでの処理
+        const talentFirstTag  = document.getElementById('talent_firsttag');
+        const talentSecondTag  = document.getElementById('talent_secondtag');
+        const talentThirdTag  = document.getElementById('talent_thirdtag');
+        if (!talentFirstTag.value){
+          talentFirstTag.value = e.target.textContent;
+        } else if (!talentSecondTag.value){
+          talentSecondTag.value = e.target.textContent;
+        } else {
+          talentThirdTag.value = e.target.textContent;
+        };
+        const talentTagsMerged  = document.getElementById('talent_tags_merged');
+        talentTagsMerged.value = talentFirstTag.value + '`/$' + talentSecondTag.value + '`/$' + talentThirdTag.value;
+        };
+      };
     });
-  })};
+  });
+};
 
-window.addEventListener('turbo:load', talentTagInput);
-window.addEventListener('turbo:render', talentTagInput);
-
+window.addEventListener('turbo:load', loadTalentTagInput);
   // 詳細ページ
 
 const menubtn = () => {
   const pullDownButton = document.getElementById('menu-btn');
   const pullDownParents = document.getElementById('menu_lists');
 
-  // if (!pullDownButton) return null;
-  // if (!pullDownParents) return null;
+  if (!pullDownButton) return null;
+  if (!pullDownParents) return null;
 
   pullDownButton.addEventListener('mouseover', () => {
   pullDownParents.setAttribute("style", "display:block;");
@@ -309,6 +385,7 @@ window.addEventListener('turbo:render', menubtn);
 
 const editTag = () => {
 
+  if (!document.getElementById('movie_main_tags_merged')) return null;
   const movieTagsMerged  = document.getElementById('movie_main_tags_merged').value;
   const movie_tag_split = movieTagsMerged.split('`/$');
   document.getElementById('movie_firsttag').value = movie_tag_split[0];
