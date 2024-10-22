@@ -8,13 +8,12 @@ margin: 0 0 24px 5%;
 }
 
 .search-form{
-  width: 810px;
+  width: 95%;
   margin: 0 auto;
 }
 
 .search-group{
   display: flex;
-  justify-content: space-between;
 }
 
 .sign-in-title{
@@ -85,17 +84,23 @@ margin: 0 0 24px 5%;
   height: 128px;
 }
 
+.tag-list{
+  margin-left: 16px;
+}
+
 .all-tag-lists{
   display: flex;
   flex-wrap:wrap;
 }
 
-.each-tag-contents{
+.talent-tag-contents, .movie-tag-contents{
   padding: 8px;
-  margin: 0 24px 12px 24px;
+  margin-bottom: 12px;
+  margin-right: 24px;
   font-size: 16px;
   line-height: 24px;
   background-color: #dddddd;
   border-radius: 3px;
   overflow: hidden;
+  cursor:pointer
 }

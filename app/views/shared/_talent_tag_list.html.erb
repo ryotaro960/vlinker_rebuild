@@ -1,7 +1,10 @@
-<% talent_tag=['かわいい', 'かっこいい', 'おもしろい', '歌がうまい', 'ゲームがうまい' ] %>
+<% talent_tag=['かわいい', 'かっこいい', 'おもしろい', '歌がうまい', 'ゲームがうまい', '眼鏡キャラ', 'ケモ耳'] %>
 
-<div class='all-tag-lists'>
-  <% talent_tag.each do |tag| %>
-    <div class='each-tag-contents'><%= tag %></div>
-  <% end %>
+<div class='tag-list'>
+  <p>VTuberタグ例(クリックで入力できます)</p>
+  <div class='all-tag-lists'>
+    <% talent_tag.each do |tag| %>
+      <div class='talent-tag-contents'><%= tag %></div>
+    <% end %>
+  </div>
 </div>

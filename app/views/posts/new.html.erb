@@ -16,21 +16,22 @@
         <%= f.text_field :movie_main_embedded, class:'hidden', id:'movie_main_embedded_form', placeholder:'11桁のコードが記入されます' %>
         <%= f.text_field :movie_main_thumbnail, class:'hidden', id:'movie_main_thumbnail_form', placeholder:'サムネイル表示のためのURLが記入されます'%>
       </div>
-      <div id='main-movie-previews'></div>
+      <div id='main-movie-previews'>
+      </div>
     </div>
   </label>
 
   <label>
     <p>
       <span class='Form-Item-Label-Any'>任意</span>
-      メイン動画タグ
+      イチオシ動画タグ
     </p>
     <%= f.text_field :movie_tags, class:'input-style movie-main-tag short-input', id:'movie_firsttag', maxlength: '20', placeholder:'20文字まで' %>
     <%= f.text_field :movie_tags, class:'input-style movie-main-tag short-input', id:'movie_secondtag', maxlength: '20', placeholder:'20文字まで' %>
     <%= f.text_field :movie_tags, class:'input-style movie-main-tag short-input', id:'movie_thirdtag', maxlength: '20', placeholder:'20文字まで' %>
     <%= f.text_field :movie_tag_name, class:'movie-main-tag hidden', id:'movie_main_tags_merged', placeholder:'ここに左三つを`/$で接続したものを表示' %>
   </label>
-  <p>動画タグ例(クリックで入力できます)<p>
+
   <%= render partial: "shared/movie_tag_list" %>
 
   <label>
@@ -128,7 +129,7 @@
     <%= f.text_field :talent_tags, class:'input-style talent-tag short-input', id:'talent_thirdtag', maxlength: '20', placeholder:'20文字まで' %>
     <%= f.text_field :talent_tag_name, class:'input-style talent-tag hidden', id:'talent_tags_merged', placeholder:'ここに左三つを`/$で接続したものを表示' %><br>
   </label>
-  <p>VTuberタグ例(クリックで入力できます)<p>
+
   <%= render partial: "shared/talent_tag_list" %>
 
   <div class='post-btn-contents'>
