@@ -82,3 +82,24 @@ iframe{
   justify-content: center;
   align-items: center;
 }
+
+/* コメント欄 */
+
+.bottom-content{
+  margin: 30px;
+  overflow-wrap: anywhere;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+}
+
+.show-each-comment{
+  display: flex;
+  align-items: center;
+}
+
+.comment-content{
+  width: clamp(300px, calc(80vw - 220px), 700px);
+}

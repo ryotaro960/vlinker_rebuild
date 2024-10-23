@@ -98,5 +98,25 @@
 </div>
 
 <div class='bottom-content'>
-  ※コメント機能実装予定
+  <h4>＜<%= @comments.length %>件のコメント＞</h4>
+  <div class='container'>
+    <% if user_signed_in? %>
+      <%= render partial: 'shared/user_image', locals: { user: current_user } %>：
+      <%= form_with(model: [@post, @comment], local: true) do |form| %>
+        <%= form.text_area :content, placeholder: 'コメントする', class:'input-style comment-input' %>
+        <%= form.submit '送信', class:'post-btn' %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+  </div>
+
+  <div class='comments'>
+    <% @comments.each do |comment| %>
+      <div class='show-each-comment'>
+        <%= render partial: 'shared/user_image', locals: { user: comment.user } %>：
+        <div class='comment-content' ><%= comment.content %></div>
+      </div>
+    <% end %>
+  </div>
 </div>
