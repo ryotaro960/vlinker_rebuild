@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
     
-      it 'passwordが7文字以下では登録できない' do
+      it 'passwordが8文字以下では登録できない' do
         @user.password = '1234567'
         @user.password_confirmation = '1234567'
         @user.valid?
