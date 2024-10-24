@@ -33,7 +33,7 @@
 |talent_channel       |string    |           |
 |talent_x             |string    |           |
 |talent_hp            |string    |           |
-|message              |string    |           |
+|message              |text      |           |
 
 ### Association
 

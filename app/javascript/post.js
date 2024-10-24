@@ -171,6 +171,31 @@ window.addEventListener('turbo:load', rightMovie);
 window.addEventListener('turbo:render', rightMovie);
 
 
+// 
+const moviePreviewsDisplay = () => {
+
+  const movieRightEmbeddedForm  = document.getElementById('movie_right_embedded_form');
+  if (movieRightEmbeddedForm.value) {
+    document.querySelector('.right-movie-preview').remove();
+    const rightMovieThumbnail = 'https://img.youtube.com/vi/' + movieRightEmbeddedForm.value + '/hqdefault.jpg';
+
+    const previewWrapper = document.createElement('div');
+    previewWrapper.setAttribute('class', 'right-movie-preview');
+
+    const previewImage = document.createElement('img');
+    previewImage.setAttribute('class', 'index-thumbnail');
+    previewImage.src = rightMovieThumbnail;
+
+    const previewList = document.getElementById('right-movie-previews');
+    previewWrapper.appendChild(previewImage);
+    previewList.appendChild(previewWrapper);
+  }
+}
+
+window.addEventListener('turbo:render', moviePreviewsDisplay);
+// 
+
+
 const talentImage = () => {
   const form = document.querySelectorAll('new_post');
   if (!form) return null;
