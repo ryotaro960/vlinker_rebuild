@@ -171,29 +171,60 @@ window.addEventListener('turbo:load', rightMovie);
 window.addEventListener('turbo:render', rightMovie);
 
 
-// 
 const moviePreviewsDisplay = () => {
+  const movieMainEmbeddedForm  = document.getElementById('movie_main_embedded_form');
+  document.querySelector('.main-movie-preview').remove();
+  if (movieMainEmbeddedForm.value) {
+    const mainMovieThumbnail = 'https://img.youtube.com/vi/' + movieMainEmbeddedForm.value + '/hqdefault.jpg';
+
+    const mainPreviewWrapper = document.createElement('div');
+    mainPreviewWrapper.setAttribute('class', 'main-movie-preview');
+
+    const mainPreviewImage = document.createElement('img');
+    mainPreviewImage.setAttribute('class', 'index-thumbnail');
+    mainPreviewImage.src = mainMovieThumbnail;
+
+    const previewList = document.getElementById('main-movie-previews');
+    mainPreviewWrapper.appendChild(mainPreviewImage);
+    previewList.appendChild(mainPreviewWrapper);
+  }
+
+  const movieLeftEmbeddedForm  = document.getElementById('movie_left_embedded_form');
+  document.querySelector('.left-movie-preview').remove();
+  if (movieLeftEmbeddedForm.value) {
+    const leftMovieThumbnail = 'https://img.youtube.com/vi/' + movieLeftEmbeddedForm.value + '/hqdefault.jpg';
+
+    const leftPreviewWrapper = document.createElement('div');
+    leftPreviewWrapper.setAttribute('class', 'left-movie-preview');
+
+    const leftPreviewImage = document.createElement('img');
+    leftPreviewImage.setAttribute('class', 'index-thumbnail');
+    leftPreviewImage.src = leftMovieThumbnail;
+
+    const previewList = document.getElementById('left-movie-previews');
+    leftPreviewWrapper.appendChild(leftPreviewImage);
+    previewList.appendChild(leftPreviewWrapper);
+  }
 
   const movieRightEmbeddedForm  = document.getElementById('movie_right_embedded_form');
+  document.querySelector('.right-movie-preview').remove();
   if (movieRightEmbeddedForm.value) {
-    document.querySelector('.right-movie-preview').remove();
     const rightMovieThumbnail = 'https://img.youtube.com/vi/' + movieRightEmbeddedForm.value + '/hqdefault.jpg';
 
-    const previewWrapper = document.createElement('div');
-    previewWrapper.setAttribute('class', 'right-movie-preview');
+    const rightPreviewWrapper = document.createElement('div');
+    rightPreviewWrapper.setAttribute('class', 'right-movie-preview');
 
-    const previewImage = document.createElement('img');
-    previewImage.setAttribute('class', 'index-thumbnail');
-    previewImage.src = rightMovieThumbnail;
+    const rightPreviewImage = document.createElement('img');
+    rightPreviewImage.setAttribute('class', 'index-thumbnail');
+    rightPreviewImage.src = rightMovieThumbnail;
 
-    const previewList = document.getElementById('right-movie-previews');
-    previewWrapper.appendChild(previewImage);
-    previewList.appendChild(previewWrapper);
-  }
+    const rightPreviewList = document.getElementById('right-movie-previews');
+    rightPreviewWrapper.appendChild(rightPreviewImage);
+    rightPreviewList.appendChild(rightPreviewWrapper);
+}
 }
 
 window.addEventListener('turbo:render', moviePreviewsDisplay);
-// 
 
 
 const talentImage = () => {
