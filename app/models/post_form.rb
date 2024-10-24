@@ -8,7 +8,7 @@ class PostForm
   validates :movie_main_thumbnail, presence: true
   validates :talent_name, presence: true, length: { maximum: 20}
   validates :user_id, presence: true
-  validates :message, length: { maximum: 250}
+  validates :message, length: { maximum: 1000}
 
   def save
     post = Post.create(user_id: user_id, movie_main: movie_main, movie_main_embedded: movie_main_embedded, movie_main_thumbnail: movie_main_thumbnail, movie_left: movie_left, movie_left_embedded: movie_left_embedded, movie_right: movie_right, movie_right_embedded: movie_right_embedded, talent_image: talent_image, talent_name: talent_name, talent_belongs: talent_belongs, talent_channel: talent_channel, talent_x: talent_x, talent_hp: talent_hp, message: message)
