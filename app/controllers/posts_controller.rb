@@ -5,27 +5,27 @@ class PostsController < ApplicationController
 
   def index
     if params[:movie_tag]
-      @posts = Post.search_by_movietag(params[:movie_tag]).order("created_at DESC")
-      @pagetitle = "動画タグ「#{params[:movie_tag]}」で検索"
+      @posts = Post.search_by_movietag(params[:movie_tag]).order('created_at DESC')
+      @pagetitle = '動画タグ「#{params[:movie_tag]}」で検索'
     elsif params[:talent_tag]
-      @posts = Post.search_by_talenttag(params[:talent_tag]).includes(:movie_tags).order("created_at DESC")
-      @pagetitle = "VTuberタグ「#{params[:talent_tag]}」で検索"
+      @posts = Post.search_by_talenttag(params[:talent_tag]).includes(:movie_tags).order('created_at DESC')
+      @pagetitle = 'VTuberタグ「#{params[:talent_tag]}」で検索'
     elsif params[:talent_name]
-      @posts = Post.where(posts: { talent_name: params[:talent_name] }).includes(:movie_tags).order("created_at DESC")
-      @pagetitle = "VTuber名「#{params[:talent_name]}」で検索"
+      @posts = Post.where(posts: { talent_name: params[:talent_name] }).includes(:movie_tags).order('created_at DESC')
+      @pagetitle = 'VTuber名「#{params[:talent_name]}」で検索'
     elsif params[:talent_belongs]
-      @posts = Post.where(posts: { talent_belongs: params[:talent_belongs] }).includes(:movie_tags).order("created_at DESC")
-      @pagetitle = "VTuberの所属事務所「#{params[:talent_belongs]}」で検索"
+      @posts = Post.where(posts: { talent_belongs: params[:talent_belongs] }).includes(:movie_tags).order('created_at DESC')
+      @pagetitle = 'VTuberの所属事務所「#{params[:talent_belongs]}」で検索'
     else
-      @posts = Post.includes(:movie_tags).order("created_at DESC")
-      @pagetitle = "トップページ"
+      @posts = Post.includes(:movie_tags).order('created_at DESC')
+      @pagetitle = 'トップページ'
     end
   end
 
   def new
     @post_form = PostForm.new
-    @post_form.movie_tag_name = "`/$`/$"
-    @post_form.talent_tag_name = "`/$`/$"
+    @post_form.movie_tag_name = '`/$`/$'
+    @post_form.talent_tag_name = '`/$`/$'
   end
 
   def create
@@ -46,8 +46,8 @@ class PostsController < ApplicationController
   def edit
     post_attributes = @post.attributes
     @post_form = PostForm.new(post_attributes)
-    @post_form.movie_tag_name = "#{@post.movie_tags.first&.movie_tag_name}`/$#{@post.movie_tags.second&.movie_tag_name}`/$#{@post.movie_tags.third&.movie_tag_name}"
-    @post_form.talent_tag_name = "#{@post.talent_tags.first&.talent_tag_name}`/$#{@post.talent_tags.second&.talent_tag_name}`/$#{@post.talent_tags.third&.talent_tag_name}"
+    @post_form.movie_tag_name = '#{@post.movie_tags.first&.movie_tag_name}`/$#{@post.movie_tags.second&.movie_tag_name}`/$#{@post.movie_tags.third&.movie_tag_name}'
+    @post_form.talent_tag_name = '#{@post.talent_tags.first&.talent_tag_name}`/$#{@post.talent_tags.second&.talent_tag_name}`/$#{@post.talent_tags.third&.talent_tag_name}'
   end
 
   def update
@@ -68,7 +68,7 @@ class PostsController < ApplicationController
 
   def search
     @q = Post.ransack(params[:q])
-    @posts = @q.result.includes(:movie_tags).order("created_at DESC")
+    @posts = @q.result.includes(:movie_tags).order('created_at DESC')
   end
   
   private
