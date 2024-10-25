@@ -23,6 +23,12 @@ class PostsController < ApplicationController
   end
 
   def new
+    posts = Post.where(posts: { user_id: current_user.id })
+    if posts.length >= 15
+        redirect_back(fallback_location: root_path)
+      flash[:alert] = '投稿は一つのアカウントにつき15件まで可能です。'
+    end
+
     @post_form = PostForm.new
     @post_form.movie_tag_name = '`/$`/$'
     @post_form.talent_tag_name = '`/$`/$'
@@ -52,7 +58,6 @@ class PostsController < ApplicationController
 
   def update
     @post_form = PostForm.new(post_form_params)
-
     if @post_form.valid?
       @post_form.update(post_form_params, @post)
       redirect_to post_path(@post.id)

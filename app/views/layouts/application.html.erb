@@ -14,6 +14,9 @@
     <header>
       <%= render partial: "shared/header" %>
     </header> 
+    <div class='flash-alert'>
+      <%= flash[:alert] %>
+    </div>
     <%= yield %>
   </body>
 </html>
