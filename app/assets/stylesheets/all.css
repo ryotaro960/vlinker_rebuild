@@ -10,6 +10,13 @@ ul{
   display: none;
 }
 
+.flash-alert{
+  background-color: darkorange;
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
+}
+
 /* shared */
 
 .user-image{
