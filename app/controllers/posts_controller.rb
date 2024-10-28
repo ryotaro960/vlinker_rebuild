@@ -73,7 +73,8 @@ class PostsController < ApplicationController
 
   def search
     @q = Post.ransack(params[:q])
-    @posts = @q.result.includes(:movie_tags).order('created_at DESC')
+    posts = @q.result.includes(:movie_tags).order('created_at DESC')
+    @posts = posts.distinct.page(params[:page]).per(18)
   end
   
   private

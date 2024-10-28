@@ -3,7 +3,7 @@
     <%= content_tag :a, page, data: { remote: remote }, rel: page.rel %>
   </li>
 <% else %>
-  <li>
+  <li class='non-active'>
     <%= link_to page, url, remote: remote, rel: page.rel %>
   </li>
 <% end %>
