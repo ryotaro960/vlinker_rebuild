@@ -30,3 +30,8 @@ ul{
   display: flex;
   align-items: center;
 }
+
+.page-change{
+  display: flex;
+  justify-content: center;
+}
