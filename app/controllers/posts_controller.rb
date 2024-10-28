@@ -6,16 +6,16 @@ class PostsController < ApplicationController
   def index
     if params[:movie_tag]
       @posts = Post.search_by_movietag(params[:movie_tag]).order('created_at DESC')
-      @pagetitle = '動画タグ「#{params[:movie_tag]}」で検索'
+      @pagetitle = "動画タグ「#{params[:movie_tag]}」で検索"
     elsif params[:talent_tag]
       @posts = Post.search_by_talenttag(params[:talent_tag]).includes(:movie_tags).order('created_at DESC')
-      @pagetitle = 'VTuberタグ「#{params[:talent_tag]}」で検索'
+      @pagetitle = "VTuberタグ「#{params[:talent_tag]}」で検索"
     elsif params[:talent_name]
       @posts = Post.where(posts: { talent_name: params[:talent_name] }).includes(:movie_tags).order('created_at DESC')
-      @pagetitle = 'VTuber名「#{params[:talent_name]}」で検索'
+      @pagetitle = "VTuber名「#{params[:talent_name]}」で検索"
     elsif params[:talent_belongs]
       @posts = Post.where(posts: { talent_belongs: params[:talent_belongs] }).includes(:movie_tags).order('created_at DESC')
-      @pagetitle = 'VTuberの所属事務所「#{params[:talent_belongs]}」で検索'
+      @pagetitle = "VTuberの所属事務所「#{params[:talent_belongs]}」で検索"
     else
       @posts = Post.includes(:movie_tags).order('created_at DESC')
       @pagetitle = 'トップページ'

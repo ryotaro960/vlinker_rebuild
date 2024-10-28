@@ -7,8 +7,8 @@
       <div class="search-field">
         <%= f.label :'search-movie-tag', '動画タグ', for:'search-movie-tag' %><br>
         <%= f.text_field :movie_tags_movie_tag_name_cont, placeholder: '動画タグ', class:'input-style short-input', id:'search-movie-tag' %><br>
-        <%= f.label :message_cont, 'コメント' %><br>
-        <%= f.text_field :message_cont, placeholder: 'コメント', class:'input-style short-input' %><br>
+        <%= f.label :message_cont, 'メッセージ' %><br>
+        <%= f.text_field :message_cont, placeholder: 'メッセージ', class:'input-style short-input' %><br>
       </div>
       <%= render partial: "shared/movie_tag_list" %>
     </div>
@@ -17,7 +17,7 @@
     <div class="search-group">
       <div class="search-field">
         <%= f.label :talent_tags_talent_tag_name_cont, 'VTuberタグ', for:'search-talent-tag' %><br>
-        <%= f.text_field :talent_tags_talent_tag_name_cont, placeholder: 'VTuber', class:'input-style short-input', id:'search-talent-tag' %><br>
+        <%= f.text_field :talent_tags_talent_tag_name_cont, placeholder: 'VTuberタグ', class:'input-style short-input', id:'search-talent-tag' %><br>
         <%= f.label :talent_name_cont, '名前' %><br>
         <%= f.text_field :talent_name_cont, placeholder: '名前', class:'input-style short-input' %><br>
         <%= f.label :talent_belongs_cont, '所属事務所' %><br>

@@ -86,14 +86,14 @@ RSpec.describe PostForm, type: :model do
         expect(@post.errors.full_messages).to include("Talent name is too long (maximum is 20 characters)")
       end
 
-      it "talent_belongsが21文字以上では登録できない" do
-        @post.talent_belongs = 'abcdefghijklmnopqrstu'
+      it "talent_belongsが31文字以上では登録できない" do
+        @post.talent_belongs = Faker::String.random(length: 31)
         @post.valid?
         expect(@post.errors.full_messages).to include("Talent belongs is too long (maximum is 20 characters)")
       end
 
       it "messageが1000文字を超えては登録できない" do
-        @post.message =  Faker::String.random(length: 1001)
+        @post.message = Faker::String.random(length: 1001)
         @post.valid?
         expect(@post.errors.full_messages).to include("Message is too long (maximum is 1000 characters)")
       end

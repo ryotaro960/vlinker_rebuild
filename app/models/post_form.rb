@@ -7,7 +7,7 @@ class PostForm
   validates :movie_main_embedded, presence: true
   validates :movie_main_thumbnail, presence: true
   validates :talent_name, presence: true, length: { maximum: 20}
-  validates :talent_belongs, length: { maximum: 20}
+  validates :talent_belongs, length: { maximum: 30}
   validates :user_id, presence: true
   validates :message, length: { maximum: 1000}
 

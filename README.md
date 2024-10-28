@@ -1,106 +1,48 @@
-# README
+# アプリケーション名
+VLinker
 
-## users テーブル
+# アプリケーション概要
+VTuberと動画の紹介を投稿、また投稿された動画やVTuberのタグなどから検索ができます。
 
-| Column           | Type | Options   |
-| ---------------- | ---- | --------- |
-|nickname          |string|null: false|
-|email             |string|null: false, unique: true|
-|encrypted_password|string|null: false|
-|comment           |string|           |
+# URL
+https://vlinker-rebuild41543.onrender.com/
 
-### Association
+# テスト用アカウント
+・Basic認証ID：admin  
+・Basic認証パスワード：newhorizon  
+・ログイン用メールアドレス：test@co.com  
+・ログイン用パスワード：aaaaaaaa
 
-- has_many :posts
-- has_many :comments, through: :posts
-- has_one  :user_image
+# 利用方法
+### 紹介動画URL
+https://drive.google.com/file/d/1-2SkTwyyQt90v5mml7OYGtnt9_UJH1VG/view?usp=drive_link
 
+### 紹介ページの投稿
+1.ログインしていれば、ヘッダーの「新規投稿」から紹介ページを投稿できます。  
+2.必須項目は「イチオシ動画のURL」が1件と、「VTuberの名前」の二項目です。  
+3.その他の任意項目は「動画のタグ」 「オススメ動画のURL(2件まで)」 「イラスト」 「VTuberのタグ」 「所属事務所」 「公式チャンネル」 「公式X」 「公式ホームページ」 「投稿者からのメッセージ」があります。  
+4.「投稿する」ボタンをクリックすると、投稿は完了です。  
+5.1つのアカウントごとに、15件まで新規投稿が可能です。
 
-## posts テーブル
+### 紹介ページの編集
+紹介ページの右上のMENUボタンから、ページの編集、削除ができます。
 
-| Column              | Type     | Options   |
-| ------------------- | -------- | --------- |
-|user                 |references|null: false, foreign_key: true|
-|movie_main           |string    |null: false|
-|movie_main_embedded  |string    |null: false|
-|movie_main_thumbnail |string    |null: false|
-|movie_left           |string    |           |
-|movie_left_embedded  |string    |           |
-|movie_right          |string    |           |
-|movie_right_embedded |string    |           |
-|talent_name          |string    |null: false|
-|talent_belongs       |string    |           |
-|talent_channel       |string    |           |
-|talent_x             |string    |           |
-|talent_hp            |string    |           |
-|message              |text      |           |
+### 検索機能
+1.ヘッダーの「動画検索」から検索が可能です。  
+2.検索項目は、「動画タグ」「メッセージ」「VTuberタグ」「名前」「所属事務所」の5項目で、部分一致、AND検索になります。  
+3.「動画タグ」「VTuberタグ」「名前」「所属事務所」は、紹介ページの各項目をクリックして完全一致検索ができます。  
 
-### Association
+# アプリケーションを作成した背景
+自分が面白いと思った動画の再生数が比較的少なく、もっと多くの人に見てもらいたい、知ってもらいたいと思ったのがきっかけです。  
+他にも自分が好きなVTuberや事務所などについて、知ってもらいたい、語りたいという思いを持った人がいるだろうと思い作成しました。  
+逆に、どんなVTuberがいるのか知りたい、たくさん動画があるけどどれを見たらいいか迷う、という方を意識して、検索機能やタグを実装しました。  
+エンタメとして気軽に楽しんでもらえるよう、投稿に必須の項目は極力少なくし、適当にクリックするだけでも楽しくなるアプリを目指しました。
 
-- belongs_to :user
-- has_one  :talent_image
-- has_many :comments
-- has_many :movie_tags, through: :post_movie_tags
-- has_many :talent_tags, through: :post_talent_tags
+# 実装予定の機能
 
+1.ページ送り機能(1ページ20件ずつ)  
+2.サジェスト機能  
+3.スマホ対応
 
-## movie_tagsテーブル
-
-| Column       | Type | Options                 |
-| ------------ | ---- | ----------------------- |
-|movie_tag_name|string|null: false, unique: true|
-
-### Association
-
-- has_many :posts
-- has_many :posts, through: :posts_movie_tags
-
-
-## post_movie_tagsテーブル
-
-| Column  | Type     | Options                      |
-| ------- | -------- | ---------------------------- |
-|post     |references|null: false, foreign_key: true|
-|movie_tag|references|null: false, foreign_key: true|
-
-### Association
-
-- belongs_to :post
-- belongs_to :movie
-
-
-## talent_tagsテーブル
-
-| Column        | Type | Options                 |
-| ------------- | ---- | ----------------------- |
-|talent_tag_name|string|null: false, unique: true|
-
-### Association
-
-- has_many :posts
-- has_many :posts, through: :posts_talent_tags
-
-
-## post_talent_tagsテーブル
-
-| Column   | Type     | Options                      |
-| -------- | -------- | ---------------------------- |
-|post      |references|null: false, foreign_key: true|
-|talent_tag|references|null: false, foreign_key: true|
-
-- belongs_to :post
-- belongs_to :talent
-
-
-## comments テーブル
-
-|Column | Type     | Options                      |
-| ----- | -------- | ---------------------------- |
-|content|text      |null: false                   |
-|user   |references|null: false, foreign_key: true|
-|post   |references|null: false, foreign_key: true|
-
-### Association
-
-- belongs_to :user
-- belongs_to :post
+# データベース設計
+[![Image from Gyazo](https://i.gyazo.com/cb58a2e529fe8ff5877c7cd963ffc630.png)](https://gyazo.com/cb58a2e529fe8ff5877c7cd963ffc630)
