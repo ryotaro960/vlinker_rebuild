@@ -4,8 +4,8 @@ class PostForm
   attr_accessor :user_id, :movie_main, :movie_main_embedded, :movie_main_thumbnail, :movie_left, :movie_left_embedded, :movie_right, :movie_right_embedded, :talent_image, :talent_name, :talent_belongs, :talent_channel, :talent_x, :talent_hp, :message, :movie_tag_name, :talent_tag_name, :id, :created_at, :updated_at
 
   validates :movie_main, presence: true
-  validates :movie_main_embedded, presence: true
-  validates :movie_main_thumbnail, presence: true
+  validates :movie_main_embedded, presence: { message: "イチオシ動画のコードが取得できませんでした。"}
+  validates :movie_main_thumbnail, presence: { message: "イチオシ動画のサムネイルが取得できませんでした。"}
   validates :talent_name, presence: true, length: { maximum: 20}
   validates :talent_belongs, length: { maximum: 30}
   validates :user_id, presence: true

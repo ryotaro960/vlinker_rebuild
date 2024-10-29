@@ -59,49 +59,50 @@ RSpec.describe PostForm, type: :model do
       it 'movie_mainが空では保存できない' do
         @post.movie_main = ''
         @post.valid?
-        expect(@post.errors.full_messages).to include("Movie main can't be blank")
+        expect(@post.errors.full_messages).to include("イチオシ動画のURLを入力してください")
       end
 
       it 'movie_main_embeddedが空では保存できない' do
         @post.movie_main_embedded = ''
         @post.valid?
-        expect(@post.errors.full_messages).to include("Movie main embedded can't be blank")
+        expect(@post.errors.full_messages).to include("イチオシ動画のコードが取得できませんでした。")
       end
 
       it 'movie_main_thumbnailが空では保存できない' do
         @post.movie_main_thumbnail = ''
         @post.valid?
-        expect(@post.errors.full_messages).to include("Movie main thumbnail can't be blank")
+        expect(@post.errors.full_messages).to include("イチオシ動画のサムネイルが取得できませんでした。")
       end
   
       it 'talent_nameが空では保存できない' do
         @post.talent_name = ''
         @post.valid?
-        expect(@post.errors.full_messages).to include("Talent name can't be blank")
+        expect(@post.errors.full_messages).to include("VTuberの名前を入力してください")
       end
 
       it "talent_nameが21文字以上では登録できない" do
         @post.talent_name = 'abcdefghijklmnopqrstu'
         @post.valid?
-        expect(@post.errors.full_messages).to include("Talent name is too long (maximum is 20 characters)")
+        expect(@post.errors.full_messages).to include("VTuberの名前は20文字以内で入力してください")
       end
 
       it "talent_belongsが31文字以上では登録できない" do
         @post.talent_belongs = Faker::String.random(length: 31)
         @post.valid?
-        expect(@post.errors.full_messages).to include("Talent belongs is too long (maximum is 20 characters)")
+        expect(@post.errors.full_messages).to include("所属事務所は30文字以内で入力してください")
       end
 
       it "messageが1000文字を超えては登録できない" do
         @post.message = Faker::String.random(length: 1001)
         @post.valid?
-        expect(@post.errors.full_messages).to include("Message is too long (maximum is 1000 characters)")
+        expect(@post.errors.full_messages).to include("メッセージは1000文字以内で入力してください")
       end
 
       it 'userが紐付いていないと保存できない' do
         @post.user_id = nil
         @post.valid?
-        expect(@post.errors.full_messages).to include("User can't be blank")
+        binding.pry
+        expect(@post.errors.full_messages).to include("Userを入力してください")
       end
     end
   end

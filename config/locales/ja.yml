@@ -10,3 +10,14 @@ ja:
     attributes:
       user:
         nickname: ニックネーム
+      comment:
+        content: コメント
+  activemodel:
+    attributes:
+      post_form:
+        movie_main: イチオシ動画のURL
+        movie_main_embedded: ""
+        movie_main_thumbnail: ""
+        talent_name: VTuberの名前
+        talent_belongs: 所属事務所
+        message: メッセージ
