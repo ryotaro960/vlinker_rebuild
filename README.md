@@ -40,9 +40,8 @@ https://drive.google.com/file/d/1-2SkTwyyQt90v5mml7OYGtnt9_UJH1VG/view?usp=drive
 
 # 実装予定の機能
 
-1.ページ送り機能(1ページ20件ずつ)  
-2.サジェスト機能  
-3.スマホ対応
+1.サジェスト機能  
+2.スマホ対応
 
 # データベース設計
 [![Image from Gyazo](https://i.gyazo.com/cb58a2e529fe8ff5877c7cd963ffc630.png)](https://gyazo.com/cb58a2e529fe8ff5877c7cd963ffc630)
