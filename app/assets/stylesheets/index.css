@@ -10,13 +10,13 @@
 }
 
 .index-thumbnail{
-  width: clamp(160px, 30vw ,640px);
+  width: clamp(240px, 30vw ,640px);
   height: clamp(90px, calc(30vw/ 16 * 9), 360px);
   object-fit: cover;
 }
 
 .index-message-box{
-  width: clamp(160px, 30vw , 640px);
+  width: clamp(240px, 30vw , 640px);
   height: 48px;
 }
 
@@ -32,9 +32,34 @@
 }
 
 .movie-tag-list{
-  width: clamp(160px, 30vw ,640px);
+  width: clamp(240px, 30vw ,640px);
   font-size: 16px;
   line-height: 24px;
   margin-top: 4px;
   margin-bottom: 20px;
+}
+
+
+
+ /* スマホ表示時 */
+ @media (max-width: 799px) {
+  
+  .index-thumbnail{
+    width: clamp(100px, 48vw ,640px);
+    height: clamp(90px, calc(48vw/ 16 * 9), 360px);
+    object-fit: cover;
+  }
+  
+  .index-message-box{
+    width: clamp(100px, 48vw , 640px);
+    height: 48px;
+  }
+  
+  .movie-tag-list{
+    width: clamp(100px, 48vw ,640px);
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 4px;
+    margin-bottom: 20px;
+  }
 }
