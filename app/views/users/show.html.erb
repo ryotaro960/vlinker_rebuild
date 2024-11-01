@@ -20,23 +20,25 @@
     </div>
     <p>ユーザー名：<%= @user.nickname%></p>
   </div>
-  <p>コメント：</p>
-  <% if user_signed_in? && current_user.id == @user.id %>
-    <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
-      <div class="user-comment">
-        <%= f.text_area :comment, class:'input-style comment-input', placeholder:'こんにちは！', maxlength: '250' %>
-        <div><%= f.submit '変更する', class:'post-btn' %></div>
-      </div>
+  <div class='user-comment-area'>
+    <div class='user-comment-title'>コメント：</div>
+    <% if user_signed_in? && current_user.id == @user.id %>
+      <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
+        <div class="user-comment">
+          <%= f.text_area :comment, class:'input-style user-comment-input', placeholder:'こんにちは！', maxlength: '250' %>
+          <%= f.submit '変更する', class:'post-btn' %>
+        </div>
+      <% end %>
+    <% else%>
+      <% if @user.comment.present? %>
+        <div class='user-comment-content'>
+          <%= @user.comment %>
+        </div>
+      <% else %>
+        こんにちは！
+      <% end %>
     <% end %>
-  <% else%>
-    <% if @user.comment.present? %>
-      <div class='user-comment-content'>
-        <%= @user.comment %>
-      </div>
-    <% else %>
-      こんにちは！
-    <% end %>
-  <% end %>
+  </div>
 </div>
-<h2>過去の投稿</h2>
+<h2 class='call-title'>過去の投稿</h2>
   <%= render partial: 'shared/posts_index', locals: { posts: @posts } %>
