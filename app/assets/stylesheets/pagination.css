@@ -1,5 +1,7 @@
 .pagination{
   display: flex;
+  flex-wrap:wrap;
+  row-gap: 24px;
 }
 
 .pagination>li>a {
@@ -13,6 +15,7 @@
 .pagination>.non-active>a:hover {
   background-color: #000000;
   color: #ffffff;
+  margin-bottom: 70px;
 }
 
 .pagination>.active>a {

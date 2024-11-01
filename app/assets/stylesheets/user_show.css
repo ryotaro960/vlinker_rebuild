@@ -11,17 +11,58 @@
 .user-profile{
 display: flex;
 align-items: center;
-margin: 0 64px;
+margin: 0 4vw;
 }
 
-.user-comment{
-  display: flex;
-  align-items: center;
+.user-comment-area{
+  display: block;
+  margin-right: 1vw;
+  align-items: flex-start;
+}
+
+.user-comment-title{
+  margin-top: 2px;
 }
 
 .user-comment-content{
-  width: 600px;
+  width: calc(98vw - 400px);
   line-height: 24px;
   font-size: 16px;
   overflow-wrap: anywhere;
+}
+
+.user-comment-input{
+  width: clamp(200px, calc(98vw - 400px), 600px);
+  height: 128px;
+}
+
+ /* タブレット、スマホ表示時 */
+ @media (max-width: 899px) {
+  .user-show{
+    display: block;
+    margin-top: 24px;
+  }
+  
+  .user-comment-area{
+    display: flex;
+    margin: 0 2vw;
+    align-items: flex-start;
+  }
+  
+  .user-comment{
+    display: flex;
+    align-items: center;
+  }
+
+  .user-comment-content{
+    width: calc(98vw - 100px);
+    line-height: 24px;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+  
+  .user-comment-input{
+    width: calc(98vw - 200px);
+    height: 128px;
+  }
 }

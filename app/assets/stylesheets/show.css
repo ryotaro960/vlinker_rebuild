@@ -2,18 +2,19 @@
   display: flex;
 }
 
+/* 動画紹介部分 */
 .call-title{
-  margin-left: 48px;
+  margin-left: clamp(10px, 2%, 48px);
 }
 
 .left-content{
   width: 60%;
-  padding-left: 30px;
+  padding-left: clamp(10px, 2%, 30px);
 }
 
 iframe{
-  width: clamp(400px, calc(60vw - 60px) , 1200px);
-  height: clamp(225px, calc((60vw - 60px)/ 16 * 9), 675px);
+  width: clamp(192px, calc(60vw - 40px) , 1200px);
+  height: clamp(108px, calc((60vw - 40px)/ 16 * 9), 675px);
 }
 
 .movie-tags{
@@ -55,7 +56,7 @@ iframe{
 }
 
 .talent-table{
-  width: calc(40vw - 60px);
+  width: calc(40vw - 40px);
   margin: auto;
 }
 
@@ -101,6 +102,81 @@ iframe{
   align-items: center;
 }
 
+.show-user-colon{
+  display: flex;
+  align-items: center;
+}
+
 .comment-content{
   width: clamp(300px, calc(80vw - 220px), 700px);
+}
+
+.user-comment-input{
+  width: clamp(200px, calc(95vw - 300px), 600px);
+  height: 128px;
+}
+
+ /* タブレット、スマホ表示時 */
+ @media (max-width: 799px) {
+
+/* 動画紹介部分 */
+  .tops-content{
+    display:block;
+  }
+  
+  .call-title{
+    margin-left: 48px;
+  }
+  
+  .left-content{
+    width: 100%;
+    padding-left: 1vw;
+  }
+
+  iframe{
+    width: 98vw;
+    height: calc( 98vw / 16 * 9);
+  }
+  
+  /* タレント紹介 */
+
+  .right-content{
+    width: 100%;
+  }
+
+  .talent-image{
+    width: clamp(100px, 50vw, 400px);
+    height: clamp(100px, 50vw , 400px);
+    object-fit: contain;
+    margin: auto;
+  }
+  
+  .talent-table{
+    width: 98vw;
+    margin: auto;
+  }
+  
+  /* コメント欄 */
+
+  .container{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  }
+
+  .show-each-comment{
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  .comment-content{
+    width: 90vw;
+  }
+  
+  .user-comment-input{
+    width: 90vw;
+    height: 128px;
+  }
 }

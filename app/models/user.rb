@@ -9,7 +9,6 @@ class User < ApplicationRecord
   validates :comment, length: { maximum: 250}
 
   has_many :posts
-  # has_many :comments, through: :posts
   has_many :comments
   has_one_attached :user_image
 end
