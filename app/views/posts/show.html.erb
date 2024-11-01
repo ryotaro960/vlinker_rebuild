@@ -101,9 +101,11 @@
   <h4>＜<%= @comments.length %>件のコメント＞</h4>
   <div class='container'>
     <% if user_signed_in? %>
-      <%= render partial: 'shared/user_image', locals: { user: current_user } %>：
+      <div class='show-user-colon'>
+        <%= render partial: 'shared/user_image', locals: { user: current_user } %>：
+      </div>
       <%= form_with(model: [@post, @comment], local: true) do |form| %>
-        <%= form.text_area :content, placeholder: 'コメントする', class:'input-style comment-input' %>
+        <%= form.text_area :content, placeholder: 'コメントする', class:'input-style user-comment-input' %>
         <%= form.submit '送信', class:'post-btn' %>
       <% end %>
     <% else %>
@@ -114,8 +116,12 @@
   <div class='comments'>
     <% @comments.each do |comment| %>
       <div class='show-each-comment'>
-        <%= render partial: 'shared/user_image', locals: { user: comment.user } %>：
-        <div class='comment-content' ><%= comment.content %></div>
+        <div class='show-user-colon'>
+          <%= render partial: 'shared/user_image', locals: { user: comment.user } %>：
+        </div>
+        <div class='comment-content' >
+          <%= comment.content %>
+        </div>
       </div>
     <% end %>
   </div>
