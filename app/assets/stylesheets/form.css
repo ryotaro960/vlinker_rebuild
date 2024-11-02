@@ -35,11 +35,11 @@ margin: 0 0 24px 5%;
 }
 
 .url-input{
-  width:700px;
+  width: clamp(100px, 90%, 700px);
 }
 
 .short-input{
-  width:400px;
+  width: clamp(100px, 90%, 400px);
 }
 
 .Form-Item-Label-Required {
@@ -80,7 +80,7 @@ margin: 0 0 24px 5%;
 }
 
 .comment-input{
-  width: 600px;
+  width: clamp(100px, 90%, 600px);
   height: 128px;
 }
 
@@ -103,4 +103,10 @@ margin: 0 0 24px 5%;
   border-radius: 3px;
   overflow: hidden;
   cursor:pointer
+}
+
+@media (max-width: 1100px) {
+  .movie_preview_content{
+    flex-direction: column;
+  }
 }

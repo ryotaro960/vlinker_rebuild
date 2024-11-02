@@ -2,22 +2,56 @@
 
   <%= link_to image_tag('vlinker_logo.jpg', class:'vlinker-logo'), root_path %>
 
-  <ul class ='lists-left'>
-    <%= link_to search_posts_path do %>
-      <li class='menu-bt'><p>動画検索</p></li>
-    <% end %>
-    <%= link_to new_post_path do %>
-      <li class='menu-bt'><p>新規投稿</p></li>
-    <% end %>
-  </ul>
+<%# 画面サイズ幅800px以上の場合 %>
 
-  <ul class='lists-right'>
-    <% if user_signed_in? %>
-      <li><%= render partial: 'shared/user_image', locals: { user: current_user } %></li> 
-      <li class='user-manage'><%= link_to 'ログアウト', destroy_user_session_path , data: {turbo_method: :delete} %></li>
-    <% else %>
-      <li class='user-manage'><%= link_to 'ログイン', new_user_session_path %></li> 
-      <li class='user-manage'><%= link_to '新規登録', new_user_registration_path %></li> 
-    <% end %>
-  </ul>
+  <div class='large-header'>
+    <ul class ='lists-left'>
+      <%= link_to search_posts_path do %>
+        <li class='menu-bt'><p>動画検索</p></li>
+      <% end %>
+      <%= link_to new_post_path do %>
+        <li class='menu-bt'><p>新規投稿</p></li>
+      <% end %>
+    </ul>
+
+    <ul class='lists-right'>
+      <% if user_signed_in? %>
+        <li><%= render partial: 'shared/user_image', locals: { user: current_user } %></li> 
+        <li class='user-manage'><%= link_to 'ログアウト', destroy_user_session_path , data: {turbo_method: :delete} %></li>
+      <% else %>
+        <li class='user-manage'><%= link_to 'ログイン', new_user_session_path %></li> 
+        <li class='user-manage'><%= link_to '新規登録', new_user_registration_path %></li> 
+      <% end %>
+    </ul>
+  </div>
+
+<%# 画面サイズ幅800px未満の場合 %>
+
+  <div class='small-header'>
+    <table border='0' class='header-table'>
+      <tbody class='header-table-body'>
+        <tr>
+          <td>
+            <%= link_to search_posts_path do %>
+              <div class='menu-bt'><p>動画検索</p></div>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to new_post_path do %>
+              <div class='menu-bt'><p>新規投稿</p></div>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <% if user_signed_in? %>
+            <td><%= link_to 'マイページ', user_path(current_user.id) %></td>
+            <td><%= link_to 'ログアウト', destroy_user_session_path , data: {turbo_method: :delete} %></td>
+          <% else %>
+            <td><%= link_to 'ログイン', new_user_session_path %></td>
+            <td><%= link_to '新規登録', new_user_registration_path %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
