@@ -116,6 +116,30 @@ iframe{
   height: 128px;
 }
 
+@media (max-width: 1000px) {
+  #menu-btn {
+  top: 80px;
+  }
+
+  .container{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  }
+
+  .show-each-comment{
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+  
+  .user-comment-input{
+    width: 90vw;
+    height: 128px;
+  }
+}
+
 /* タブレット、スマホ表示時 */
 @media (max-width: 799px) {
 
@@ -137,7 +161,7 @@ iframe{
     width: 98vw;
     height: calc( 98vw / 16 * 9);
   }
-  
+
   /* タレント紹介 */
 
   .right-content{
@@ -158,25 +182,7 @@ iframe{
   
   /* コメント欄 */
 
-  .container{
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  }
-
-  .show-each-comment{
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-  }
-
   .comment-content{
     width: 90vw;
-  }
-  
-  .user-comment-input{
-    width: 90vw;
-    height: 128px;
   }
 }
