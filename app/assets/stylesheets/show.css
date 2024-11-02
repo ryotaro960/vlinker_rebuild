@@ -111,8 +111,8 @@ iframe{
   width: clamp(300px, calc(80vw - 220px), 700px);
 }
 
-.user-comment-input{
-  width: clamp(200px, calc(95vw - 300px), 600px);
+.show-comment-input{
+  width: 600px;
   height: 128px;
 }
 
@@ -122,9 +122,7 @@ iframe{
   }
 
   .container{
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
+  display: block;
   }
 
   .show-each-comment{
@@ -134,8 +132,8 @@ iframe{
     align-items: baseline;
   }
   
-  .user-comment-input{
-    width: 90vw;
+  .show-comment-input{
+    width: clamp(400px, calc(100vw - 160px), 600px);
     height: 128px;
   }
 }
@@ -183,6 +181,12 @@ iframe{
   /* コメント欄 */
 
   .comment-content{
+    width: 90vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .show-comment-input{
     width: 90vw;
   }
 }

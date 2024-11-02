@@ -105,7 +105,7 @@
         <%= render partial: 'shared/user_image', locals: { user: current_user } %>：
       </div>
       <%= form_with(model: [@post, @comment], local: true) do |form| %>
-        <%= form.text_area :content, placeholder: 'コメントする', class:'input-style user-comment-input' %>
+        <%= form.text_area :content, placeholder: 'コメントする', class:'input-style show-comment-input' %>
         <%= form.submit '送信', class:'post-btn' %>
       <% end %>
     <% else %>
