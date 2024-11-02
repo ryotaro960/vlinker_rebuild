@@ -116,8 +116,8 @@ iframe{
   height: 128px;
 }
 
- /* タブレット、スマホ表示時 */
- @media (max-width: 799px) {
+/* タブレット、スマホ表示時 */
+@media (max-width: 799px) {
 
 /* 動画紹介部分 */
   .tops-content{
