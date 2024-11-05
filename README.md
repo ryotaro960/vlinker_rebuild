@@ -40,8 +40,7 @@ https://drive.google.com/file/d/1-2SkTwyyQt90v5mml7OYGtnt9_UJH1VG/view?usp=drive
 
 # 実装予定の機能
 
-1.サジェスト機能  
-2.スマホ対応
+1.投稿時や検索時のサジェスト機能  
 
 # データベース設計
 [![Image from Gyazo](https://i.gyazo.com/cb58a2e529fe8ff5877c7cd963ffc630.png)](https://gyazo.com/cb58a2e529fe8ff5877c7cd963ffc630)
