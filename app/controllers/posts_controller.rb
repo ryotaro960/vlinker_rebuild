@@ -5,10 +5,10 @@ class PostsController < ApplicationController
 
   def index
     if params[:movie_tag]
-      @posts = Post.search_by_movietag(params[:movie_tag]).page(params[:page]).per(18).order('created_at DESC')
+      @posts = Post.search_by_movietag(params[:movie_tag]).distinct.page(params[:page]).per(18).order('created_at DESC')
       @pagetitle = "動画タグ「#{params[:movie_tag]}」で検索"
     elsif params[:talent_tag]
-      @posts = Post.search_by_talenttag(params[:talent_tag]).includes(:movie_tags).page(params[:page]).per(18).order('created_at DESC')
+      @posts = Post.search_by_talenttag(params[:talent_tag]).includes(:movie_tags).distinct.page(params[:page]).per(18).order('created_at DESC')
       @pagetitle = "VTuberタグ「#{params[:talent_tag]}」で検索"
     elsif params[:talent_name]
       @posts = Post.where(posts: { talent_name: params[:talent_name] }).includes(:movie_tags).page(params[:page]).per(18).order('created_at DESC')

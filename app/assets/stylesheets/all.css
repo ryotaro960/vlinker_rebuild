@@ -17,6 +17,9 @@ ul{
   line-height: 24px;
 }
 
+.call-title{
+  margin-left: clamp(10px, 2%, 48px);
+}
 /* shared */
 
 .user-image-name{

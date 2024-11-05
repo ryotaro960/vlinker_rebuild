@@ -1,3 +1,7 @@
+.index-title{
+  margin-left: clamp(10px, 2%, 48px);
+}
+
 .index-post-content{
   display: flex;
   flex-wrap:wrap;
@@ -39,11 +43,8 @@
   margin-bottom: 20px;
 }
 
-
-
  /* スマホ表示時 */
  @media (max-width: 799px) {
-  
   .index-thumbnail{
     width: clamp(100px, 48vw ,640px);
     height: clamp(90px, calc(48vw/ 16 * 9), 360px);
@@ -61,5 +62,12 @@
     line-height: 24px;
     margin-top: 4px;
     margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .index-title{
+    margin-left: 1vw;
+    font-size: 24px;
   }
 }

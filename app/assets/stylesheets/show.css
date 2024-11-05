@@ -3,9 +3,6 @@
 }
 
 /* 動画紹介部分 */
-.call-title{
-  margin-left: clamp(10px, 2%, 48px);
-}
 
 .left-content{
   width: 60%;
