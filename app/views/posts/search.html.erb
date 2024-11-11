@@ -27,6 +27,11 @@
     </div>
     <%= f.submit '検索', class:'post-btn' %>
   <% end %>
-</div>
 
+  <% if @posts.length == 0 %>
+    <p>検索結果はありませんでした。</p>
+  <% elsif %>
+    <p>検索結果：<%= @posts.length %>件</p>
+  <% end %>
+</div>
 <%= render partial: "shared/posts_index", locals: { posts: @posts } %>
