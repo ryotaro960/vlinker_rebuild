@@ -107,10 +107,10 @@
       </div>
       <%= form_with(model: [@post, @comment], local: true) do |form| %>
         <%= form.text_area :content, placeholder: 'コメントする', class:'input-style show-comment-input' %>
-        <% if current_user.id == @post.user_id %>
-          <% form.text_field :kidoku, value: 'true' %>
+        <% if current_user.id == @post.user.id %>
+          <%= form.text_field :kidoku, value: 'kidoku', class:'hidden' %>
         <% else %>
-          <% form.text_field :kidoku, value: 'false' %>
+          <%= form.text_field :kidoku, value: 'midoku', class:'hidden' %>
         <% end %>
         <%= form.submit '送信', class:'post-btn' %>
       <% end %>
@@ -129,8 +129,8 @@
           <%= comment.content %>
         </div>
       </div>
-    <% if current_user.id == @post.user_id %>
-      <% comment.update(kidoku: 'true') %>
+    <% if user_signed_in? && current_user.id == @post.user.id %>
+      <% comment.update(kidoku: 'kidoku') %>
     <% end %>
     <% end %>
   </div>
