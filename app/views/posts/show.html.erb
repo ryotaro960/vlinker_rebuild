@@ -1,4 +1,5 @@
 <%# 動画 %>
+
 <div class='tops-content'>
   <div class='left-content'>
     <h1 class='call-title'>イチオシ動画</h1>
@@ -106,6 +107,11 @@
       </div>
       <%= form_with(model: [@post, @comment], local: true) do |form| %>
         <%= form.text_area :content, placeholder: 'コメントする', class:'input-style show-comment-input' %>
+        <% if current_user.id == @post.user_id %>
+          <% form.text_field :kidoku, value: 'true' %>
+        <% else %>
+          <% form.text_field :kidoku, value: 'false' %>
+        <% end %>
         <%= form.submit '送信', class:'post-btn' %>
       <% end %>
     <% else %>
@@ -123,6 +129,9 @@
           <%= comment.content %>
         </div>
       </div>
+    <% if current_user.id == @post.user_id %>
+      <% comment.update(kidoku: 'true') %>
+    <% end %>
     <% end %>
   </div>
 </div>
