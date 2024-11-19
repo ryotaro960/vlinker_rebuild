@@ -7,7 +7,6 @@ RSpec.describe "Posts", type: :request do
   end
   describe 'GET #index' do
     it 'indexアクションにリクエストすると正常にレスポンスが返ってくる' do
-      binding.pry
       get root_path
       expect(response.status).to eq 200
     end

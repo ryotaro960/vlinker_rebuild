@@ -40,5 +40,28 @@
     <% end %>
   </div>
 </div>
+
 <h2 class='call-title'>過去の投稿</h2>
-  <%= render partial: 'shared/posts_index', locals: { posts: @posts } %>
+
+<div class='index-post-content'>
+  <% @posts.each do |post| %>
+    <div class='index-contents'>
+      <%= link_to image_tag(post.movie_main_thumbnail, class:'index-thumbnail'), post_path(post.id) %>
+      <% midoku = Comment.where(comments: { post_id: post.id }).where(comments: { kidoku: 'midoku' }) %>
+      <% if midoku.length > 0 %>
+        <%= image_tag 'newicon.png', class:'newicon' %>
+      <% end %>
+      <% if post.message.present? %>
+        <div class='index-message-box'> 
+          <%= link_to post.message, post_path(post.id), class:'index-message-content' %>
+        </div>
+      <% end %>
+      <div class='movie-tag-list index-message-content'>
+        関連タグ：
+          <% post.movie_tags.each do |tag| %>
+            <%= tag.movie_tag_name if tag.present? %>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

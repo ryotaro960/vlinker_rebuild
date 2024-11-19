@@ -101,7 +101,6 @@ RSpec.describe PostForm, type: :model do
       it 'userが紐付いていないと保存できない' do
         @post.user_id = nil
         @post.valid?
-        binding.pry
         expect(@post.errors.full_messages).to include("Userを入力してください")
       end
     end

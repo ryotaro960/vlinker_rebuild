@@ -11,12 +11,19 @@
   margin-top: 20px;
   margin-left: clamp(1px, 1vw, 40px);
   margin-right: clamp(1px, 1vw, 40px);
+  position: relative;
 }
 
 .index-thumbnail{
   width: clamp(240px, 30vw ,640px);
   height: clamp(90px, calc(30vw/ 16 * 9), 360px);
   object-fit: cover;
+}
+
+.newicon{
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
 
 .index-message-box{
